@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <title>audio-editor</title>
+    <link href="stylesheets/audio-editor.css" media="screen" rel="stylesheet" type="text/css" />
+    <link href="stylesheets/ui-lightness/jquery-ui-1.8.23.custom.css" media="screen" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    <h1>Pick up a mp3</h1>
+    <input type="file" id="file">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.8.23/jquery-ui.min.js"></script>
+    <script src="http://documentcloud.github.com/underscore/underscore-min.js"></script>
+    <script src="http://documentcloud.github.com/backbone/backbone-min.js"></script>
+
+    <script>
+    var require = {
+      "baseUrl":'javascripts',
+      hbs : {
+        templateExtension : 'hbs',
+        disableI18n : true
+      },
+      paths  : {
+        'hbs' : 'vender/require-handlebars-plugin/hbs',
+        "i18nprecompile" : "vender/require-handlebars-plugin/i18nprecompile",
+        'handlebars' : 'vender/require-handlebars-plugin/Handlebars'
+      }
+    };
+    </script>
+    <script data-main="main" src="http://requirejs.org/docs/release/2.0.6/minified/require.js"></script>
+  </body>
+</html>
+
