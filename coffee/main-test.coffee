@@ -1,46 +1,21 @@
-###
-if typeof require is "function" and typeof module is "object"
-  buster = require("buster")
-  require "./strftime"
-###
-require([
+define (require)->
+  worker_console_spec_js = require 'text!./worker_console_spec.js'
+  worker_util = require './lib/worker/worker_util'
+  console.log worker_util
 
-], ()->
-  assert = buster.assert
+  buster.spec.expose()
 
-  buster.testCase "Date strftime tests",
-    setUp: ->
-      #create PhotoPicker
+  describe "worker console", ->
+    inlineworker = worker_util.createInlineWorker(worker_console_spec_js)
+    #assert.equals true, true
+    if worker_util.options.enableDebug
+      it('should print out log from worker', ->
+        expect(true).toBeTrue()
+      )
+    else
+      it("shouldn't print out log from worker", ->
+        expect(true).toBeTrue()
+      )
 
-    "photoPicker":
 
-      "thumbnailData": ->
-        assert.equals true, true
 
-    ###
-
-    "%Y":
-      setUp: ->
-        @year = @date.strftime("%Y")
-
-      "should return full year": ->
-        assert.equals @year, "2009"
-
-      "should return a string": ->
-        assert.equals typeof @year, "string"
-
-    "%y should return two digit year": ->
-      assert.equals @date.strftime("%y"), "09"
-
-    "%m should return month": ->
-      assert.equals @date.strftime("%m"), "12"
-
-    "%d should return date": ->
-      assert.equals @date.strftime("%d"), "05"
-
-    "//%j should return the day of the year": ->
-      date = new Date(2011, 0, 1)
-      assert.equals date.strftime("%j"), 1
-    ###
-
-)
