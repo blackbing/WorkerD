@@ -1,4 +1,4 @@
-#sharedWorker_chatroom
+#webWorkerUtil
 
 ##Introduction
 ##Development
