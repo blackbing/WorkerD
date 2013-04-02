@@ -2,10 +2,11 @@
 (function() {
 
   define(function(require) {
-    var WorkerD, countSum, inlineWorker_js, loaded, loading, log;
+    var WorkerD, countSum, inlineWorker_js, loaded, loading, log, sumMax;
     log = require('./lib/log');
     WorkerD = require('./lib/worker/workerD');
     inlineWorker_js = require('text!./inlineWorker.js');
+    sumMax = 1000000000;
     loading = function() {
       return $('.loading').show();
     };
@@ -26,7 +27,7 @@
       loading();
       ts = +(new Date());
       log('sum without Worker start....');
-      sum = countSum(1000000000);
+      sum = countSum(sumMax);
       log("getSum: " + sum);
       log('sum without worker end');
       ts = +(new Date()) - ts;
@@ -40,7 +41,7 @@
       log('sum without Worker start....');
       return setTimeout(function() {
         var sum;
-        sum = countSum(1000000000);
+        sum = countSum(sumMax);
         log("getSum: " + sum);
         log('sum without worker end');
         ts = +(new Date()) - ts;
@@ -53,7 +54,7 @@
       loading();
       ts = +(new Date());
       worker = new WorkerD(inlineWorker_js);
-      worker.send('test');
+      worker.send('getSum', sumMax);
       log('sum with worker start');
       return worker.on('getSum', function(event, data) {
         log("getSum: " + data);

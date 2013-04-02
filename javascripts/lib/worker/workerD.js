@@ -24,12 +24,21 @@
         this.worker.addEventListener('message', onMessage);
       }
 
-      WorkerD.prototype.send = function() {
-        return this.worker.postMessage.apply(this.worker, arguments);
+      WorkerD.prototype.send = function(id, msgData, options) {
+        var msg;
+        msg = {
+          msgId: id,
+          msgData: msgData
+        };
+        return this.worker.postMessage.apply(this.worker, [msg, options]);
       };
 
       WorkerD.prototype.on = function(id, handle) {
         return o.on.apply(o, arguments);
+      };
+
+      WorkerD.prototype.terminate = function() {
+        return this.worker.terminate();
       };
 
       return WorkerD;

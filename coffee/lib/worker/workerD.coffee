@@ -15,11 +15,19 @@ define (require)->
       @worker = worker_util.createInlineWorker(inlineWorker_js)
       @worker.addEventListener('message', onMessage)
 
-    send: ()->
-      @worker.postMessage.apply(@worker, arguments)
+    send: (id, msgData, options)->
+      msg =
+        msgId: id
+        msgData: msgData
+
+      @worker.postMessage.apply(@worker, [msg, options])
 
     on: (id, handle)->
       o.on.apply(o, arguments)
+
+    terminate: ()->
+      @worker.terminate()
+
 
 
 

@@ -5,6 +5,8 @@ define (require)->
   WorkerD = require './lib/worker/workerD'
   inlineWorker_js = require 'text!./inlineWorker.js'
 
+  sumMax = 1000000000
+
   loading = ->
     $('.loading').show()
 
@@ -23,7 +25,7 @@ define (require)->
     ts = +(new Date())
     log 'sum without Worker start....'
 
-    sum = countSum(1000000000)
+    sum = countSum(sumMax)
 
     log "getSum: #{sum}"
     log 'sum without worker end'
@@ -39,8 +41,7 @@ define (require)->
 
     setTimeout(->
 
-      sum = countSum(1000000000)
-
+      sum = countSum(sumMax)
 
       log "getSum: #{sum}"
       log 'sum without worker end'
@@ -54,8 +55,8 @@ define (require)->
     loading()
     ts = +(new Date())
     worker = new WorkerD(inlineWorker_js)
-    #worker.send('getSum', {start:0, end: 10})
-    worker.send('test')
+    worker.send('getSum', sumMax)
+    #worker.send('test')
     log 'sum with worker start'
     worker.on('getSum', (event, data)->
       log "getSum: #{data}"

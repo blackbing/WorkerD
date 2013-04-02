@@ -1,6 +1,6 @@
 define (require)->
   worker_console_js = require 'text!./worker_console.js'
-  worker_send_js = require 'text!./worker_send.js'
+  worker_event_js = require 'text!./worker_event.js'
 
   URL = window.URL or window.webkitURL
   class WorkerUtil
@@ -9,7 +9,7 @@ define (require)->
 
       if options.enableDebug
         content = worker_console_js + '\n' + content
-      content = worker_send_js + '\n' + content
+      content = worker_event_js + '\n' + content
       content
 
     prepareInlineDebug = (inlineWorker)->
@@ -88,8 +88,4 @@ define (require)->
       worker = @createInlineWorker.apply(@, arguments)
 
 
-
-
-  new WorkerUtil(
-    #enableDebug: false
-  )
+  new WorkerUtil()

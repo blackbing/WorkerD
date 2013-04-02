@@ -2,9 +2,9 @@
 (function() {
 
   define(function(require) {
-    var URL, WorkerUtil, worker_console_js, worker_send_js;
+    var URL, WorkerUtil, worker_console_js, worker_event_js;
     worker_console_js = require('text!./worker_console.js');
-    worker_send_js = require('text!./worker_send.js');
+    worker_event_js = require('text!./worker_event.js');
     URL = window.URL || window.webkitURL;
     WorkerUtil = (function() {
       var append_console, getSharedWorkerURL, options, prepareInlineDebug, storeSharedWorkerURL;
@@ -13,7 +13,7 @@
         if (options.enableDebug) {
           content = worker_console_js + '\n' + content;
         }
-        content = worker_send_js + '\n' + content;
+        content = worker_event_js + '\n' + content;
         return content;
       };
 

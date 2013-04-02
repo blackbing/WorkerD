@@ -3,11 +3,9 @@
 
   console.log('inlineWorker loaded');
 
-  self.addEventListener("message", function(e) {
-    var cnt, max, sum;
-    console.log('inlineWorker got message');
+  this.on("getSum", function(max) {
+    var cnt, sum;
     sum = cnt = 0;
-    max = 1000000000;
     while (cnt <= max) {
       sum += cnt++;
     }
