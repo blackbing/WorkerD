@@ -2,14 +2,18 @@
 (function() {
 
   define(function(require) {
-    var URL, WorkerUtil, worker_console_js;
+    var URL, WorkerUtil, worker_console_js, worker_send_js;
     worker_console_js = require('text!./worker_console.js');
+    worker_send_js = require('text!./worker_send.js');
     URL = window.URL || window.webkitURL;
     WorkerUtil = (function() {
       var append_console, getSharedWorkerURL, options, prepareInlineDebug, storeSharedWorkerURL;
 
       append_console = function(content) {
-        content = worker_console_js + '\n' + content;
+        if (options.enableDebug) {
+          content = worker_console_js + '\n' + content;
+        }
+        content = worker_send_js + '\n' + content;
         return content;
       };
 
@@ -22,10 +26,10 @@
           }
           data = event.data;
           if (typeof data === 'object' && (data.debug != null)) {
-            console.log("╭console from worker╮");
+            console.group("console from worker");
             args = _.toArray(data.args);
             console[data.debug].apply(console, args);
-            return console.log("╰───────────────────╯");
+            return console.groupEnd("console from worker");
           }
         }, false);
         inlineWorker.addEventListener('error', function(event) {
@@ -80,6 +84,12 @@
         prepareInlineDebug(inlineWorker);
         URL.revokeObjectURL(blobWorker_url);
         return inlineWorker;
+      };
+
+      WorkerUtil.prototype.createInlineWorkerD = function(content) {
+        var worker, _dfr;
+        _dfr = $.Deferred();
+        return worker = this.createInlineWorker.apply(this, arguments);
       };
 
       return WorkerUtil;

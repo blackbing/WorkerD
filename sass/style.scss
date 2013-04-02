@@ -1,2 +1,22 @@
-body{
+html, body{
+  height: 100%;
+}
+#log{
+  outline: 1px solid grey;
+}
+
+div.loading{
+  background-image: url('../img/ajax-loader.gif');
+  background-repeat: no-repeat;
+  position: fixed;
+  top: 50px;
+  width: 48px;
+  height: 48px;
+  left: 50%;
+  margin-left: -50px;
+  display:none;
+}
+#log{
+  padding: 10px;
+  height: 100%;
 }

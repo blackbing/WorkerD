@@ -1,11 +1,15 @@
 define (require)->
   worker_console_js = require 'text!./worker_console.js'
+  worker_send_js = require 'text!./worker_send.js'
 
   URL = window.URL or window.webkitURL
   class WorkerUtil
     #private method
     append_console = (content)->
-      content = worker_console_js + '\n' + content
+
+      if options.enableDebug
+        content = worker_console_js + '\n' + content
+      content = worker_send_js + '\n' + content
       content
 
     prepareInlineDebug = (inlineWorker)->
@@ -14,10 +18,10 @@ define (require)->
           return false
         data = event.data
         if typeof data is 'object' and data.debug?
-          console.log "╭console from worker╮"
+          console.group "console from worker"
           args = _.toArray(data.args)
           console[data.debug].apply(console, args)
-          console.log "╰───────────────────╯"
+          console.groupEnd "console from worker"
       , false)
 
       #make sure if you want to hadle error event by yourself
@@ -34,6 +38,7 @@ define (require)->
       localStorage.getItem(name)
 
     options =
+      #default is true
       enableDebug: true
 
     #private method END
@@ -76,6 +81,11 @@ define (require)->
       #revokeObjectURL after creating it
       URL.revokeObjectURL(blobWorker_url)
       inlineWorker
+
+
+    createInlineWorkerD: (content)->
+      _dfr = $.Deferred()
+      worker = @createInlineWorker.apply(@, arguments)
 
 
 

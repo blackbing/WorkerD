@@ -2,30 +2,67 @@
 (function() {
 
   define(function(require) {
-    var ChatRoom, sharedworker_js, worker_util;
-    sharedworker_js = require('text!./sharedWorker.js');
-    worker_util = require('./lib/worker/worker_util');
-    ChatRoom = (function() {
-
-      function ChatRoom() {
-        this.worker = worker_util.createInlineSharedWorker(sharedworker_js, 'chatroom');
-        this.worker.port.addEventListener('message', this.onMessage, false);
-        console.log(this.worker);
-        console.log('initial ChatRoom');
-        this.worker.port.start();
+    var WorkerD, countSum, inlineWorker_js, loaded, loading, log;
+    log = require('./lib/log');
+    WorkerD = require('./lib/worker/workerD');
+    inlineWorker_js = require('text!./inlineWorker.js');
+    loading = function() {
+      return $('.loading').show();
+    };
+    loaded = function() {
+      $('.loading').hide();
+      return log("<hr>");
+    };
+    countSum = function(max) {
+      var cnt, sum;
+      sum = cnt = 0;
+      while (cnt <= max) {
+        sum += cnt++;
       }
-
-      ChatRoom.prototype.onMessage = function(event) {
-        var data;
-        console.log(event);
-        data = event.data;
-        return console.log(data);
-      };
-
-      return ChatRoom;
-
-    })();
-    return new ChatRoom();
+      return sum;
+    };
+    $('#sum_without_worker').on('click', function() {
+      var sum, ts;
+      loading();
+      ts = +(new Date());
+      log('sum without Worker start....');
+      sum = countSum(1000000000);
+      log("getSum: " + sum);
+      log('sum without worker end');
+      ts = +(new Date()) - ts;
+      log("time spend: " + ts + " ms");
+      return loaded();
+    });
+    $('#sum_without_worker_delay').on('click', function() {
+      var ts;
+      loading();
+      ts = +(new Date());
+      log('sum without Worker start....');
+      return setTimeout(function() {
+        var sum;
+        sum = countSum(1000000000);
+        log("getSum: " + sum);
+        log('sum without worker end');
+        ts = +(new Date()) - ts;
+        log("time spend: " + ts + " ms");
+        return loaded();
+      }, 200);
+    });
+    return $('#sum_with_worker').on('click', function() {
+      var ts, worker;
+      loading();
+      ts = +(new Date());
+      worker = new WorkerD(inlineWorker_js);
+      worker.send('test');
+      log('sum with worker start');
+      return worker.on('getSum', function(event, data) {
+        log("getSum: " + data);
+        log('sum with worker end');
+        ts = +(new Date()) - ts;
+        log("time spend: " + ts + " ms");
+        return loaded();
+      });
+    });
   });
 
 }).call(this);
