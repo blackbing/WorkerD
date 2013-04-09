@@ -54,7 +54,7 @@ define (require)->
   $('#sum_with_worker').on('click', ->
     loading()
     ts = +(new Date())
-    worker = new WorkerD(inlineWorker_js)
+    worker = new WorkerD(inlineWorker_js, {enableRequire: false})
     worker.send('getSum', sumMax)
     #worker.send('test')
     log 'sum with worker start'

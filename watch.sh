@@ -1,3 +1,4 @@
 #/bin/sh
-coffee -wc -o javascripts/ coffee/ &
-compass watch .
+coffee -wc -o javascripts/ coffee/ &\
+compass watch . &\
+guard start

@@ -1,5 +1,5 @@
 
-console.log location.href
+#console.log 'inlineWorker loaded'
 
 require(
   ["require", "module", "test-car"], (require, module, Car) ->
@@ -8,7 +8,6 @@ require(
 )
 
 
-console.log 'inlineWorker loaded'
 
 @on "getSum", (max) ->
   sum = cnt = 0

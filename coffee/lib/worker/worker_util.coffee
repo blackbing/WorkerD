@@ -16,6 +16,7 @@ define (require)->
 
       if options.enableDebug
         jsContent.push(worker_console_js)
+
       jsContent.push(worker_event_js)
       jsContent.push(content)
       jsContent.join("\n")

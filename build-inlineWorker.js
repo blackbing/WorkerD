@@ -1,6 +1,6 @@
 {
-  "baseUrl":'javascripts',
+  baseUrl: "javascripts",
   optimize: "none",
   name: "inlineWorker",
-  out: 'javascripts/inlineWorker-built.js'
+  out: "javascripts/inlineWorker-built.js"
 }
