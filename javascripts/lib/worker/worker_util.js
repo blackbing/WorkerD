@@ -2,19 +2,27 @@
 (function() {
 
   define(function(require) {
-    var URL, WorkerUtil, worker_console_js, worker_event_js;
+    var URL, WorkerUtil, importRequirejs, requirejsPath, worker_console_js, worker_event_js;
     worker_console_js = require('text!./worker_console.js');
     worker_event_js = require('text!./worker_event.js');
+    requirejsPath = 'http://requirejs.org/docs/release/2.1.5/minified/require.js';
+    importRequirejs = "importScripts('" + requirejsPath + "');";
     URL = window.URL || window.webkitURL;
     WorkerUtil = (function() {
       var append_console, getSharedWorkerURL, options, prepareInlineDebug, storeSharedWorkerURL;
 
       append_console = function(content) {
-        if (options.enableDebug) {
-          content = worker_console_js + '\n' + content;
+        var jsContent;
+        jsContent = [];
+        if (options.enableRequire) {
+          jsContent.push(importRequirejs);
         }
-        content = worker_event_js + '\n' + content;
-        return content;
+        if (options.enableDebug) {
+          jsContent.push(worker_console_js);
+        }
+        jsContent.push(worker_event_js);
+        jsContent.push(content);
+        return jsContent.join("\n");
       };
 
       prepareInlineDebug = function(inlineWorker) {
@@ -47,7 +55,8 @@
       };
 
       options = {
-        enableDebug: true
+        enableDebug: true,
+        enableRequire: true
       };
 
       function WorkerUtil(opts) {

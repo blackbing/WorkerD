@@ -2,15 +2,23 @@ define (require)->
   worker_console_js = require 'text!./worker_console.js'
   worker_event_js = require 'text!./worker_event.js'
 
+  requirejsPath = 'http://requirejs.org/docs/release/2.1.5/minified/require.js'
+  importRequirejs = "importScripts('#{requirejsPath}');"
+
   URL = window.URL or window.webkitURL
   class WorkerUtil
     #private method
     append_console = (content)->
 
+      jsContent = []
+      if options.enableRequire
+        jsContent.push(importRequirejs)
+
       if options.enableDebug
-        content = worker_console_js + '\n' + content
-      content = worker_event_js + '\n' + content
-      content
+        jsContent.push(worker_console_js)
+      jsContent.push(worker_event_js)
+      jsContent.push(content)
+      jsContent.join("\n")
 
     prepareInlineDebug = (inlineWorker)->
       inlineWorker.addEventListener('message', (event)=>
@@ -40,6 +48,7 @@ define (require)->
     options =
       #default is true
       enableDebug: true
+      enableRequire: true
 
     #private method END
 
