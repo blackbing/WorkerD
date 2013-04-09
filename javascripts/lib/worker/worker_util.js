@@ -11,14 +11,14 @@
     WorkerUtil = (function() {
       var append_console, getSharedWorkerURL, options, prepareInlineDebug, storeSharedWorkerURL;
 
-      append_console = function(content) {
+      append_console = function(content, opts) {
         var jsContent;
 
         jsContent = [];
-        if (options.enableRequire) {
+        if (opts.enableRequire) {
           jsContent.push(importRequirejs);
         }
-        if (options.enableDebug) {
+        if (opts.enableDebug) {
           jsContent.push(worker_console_js);
         }
         jsContent.push(worker_event_js);
@@ -26,13 +26,13 @@
         return jsContent.join("\n");
       };
 
-      prepareInlineDebug = function(inlineWorker) {
+      prepareInlineDebug = function(inlineWorker, opts) {
         var _this = this;
 
         inlineWorker.addEventListener('message', function(event) {
           var args, data;
 
-          if (!options.enableDebug) {
+          if (!opts.enableDebug) {
             return false;
           }
           data = event.data;
@@ -67,16 +67,17 @@
         this.options = options;
       }
 
-      WorkerUtil.prototype.createInlineWorker = function(content) {
+      WorkerUtil.prototype.createInlineWorker = function(content, opts) {
         var blobWorker, blobWorker_url, inlineWorker;
 
-        content = append_console(content);
+        opts = _.extend(options, opts);
+        content = append_console(content, opts);
         blobWorker = new Blob([content], {
           type: 'application/javascript'
         });
         blobWorker_url = URL.createObjectURL(blobWorker);
         inlineWorker = new Worker(blobWorker_url);
-        prepareInlineDebug(inlineWorker);
+        prepareInlineDebug(inlineWorker, opts);
         URL.revokeObjectURL(blobWorker_url);
         return inlineWorker;
       };
@@ -98,13 +99,6 @@
         prepareInlineDebug(inlineWorker);
         URL.revokeObjectURL(blobWorker_url);
         return inlineWorker;
-      };
-
-      WorkerUtil.prototype.createInlineWorkerD = function(content) {
-        var worker, _dfr;
-
-        _dfr = $.Deferred();
-        return worker = this.createInlineWorker.apply(this, arguments);
       };
 
       return WorkerUtil;

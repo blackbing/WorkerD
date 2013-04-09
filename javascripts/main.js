@@ -59,7 +59,8 @@
       loading();
       ts = +(new Date());
       worker = new WorkerD(inlineWorker_js, {
-        enableRequire: false
+        enableRequire: true,
+        enableDebug: true
       });
       worker.send('getSum', sumMax);
       log('sum with worker start');

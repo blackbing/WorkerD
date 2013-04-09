@@ -1,5 +1,5 @@
 
-#console.log 'inlineWorker loaded'
+console.log 'inlineWorker loaded'
 
 require(
   ["require", "module", "test-car"], (require, module, Car) ->

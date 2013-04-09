@@ -8,22 +8,22 @@ define (require)->
   URL = window.URL or window.webkitURL
   class WorkerUtil
     #private method
-    append_console = (content)->
+    append_console = (content, opts)->
 
       jsContent = []
-      if options.enableRequire
+      if opts.enableRequire
         jsContent.push(importRequirejs)
 
-      if options.enableDebug
+      if opts.enableDebug
         jsContent.push(worker_console_js)
 
       jsContent.push(worker_event_js)
       jsContent.push(content)
       jsContent.join("\n")
 
-    prepareInlineDebug = (inlineWorker)->
+    prepareInlineDebug = (inlineWorker, opts)->
       inlineWorker.addEventListener('message', (event)=>
-        if not options.enableDebug
+        if not opts.enableDebug
           return false
         data = event.data
         if typeof data is 'object' and data.debug?
@@ -59,13 +59,14 @@ define (require)->
       @options = options
       #do something
 
-    createInlineWorker: (content)->
-      content = append_console(content)
+    createInlineWorker: (content, opts)->
+      opts = _.extend(options, opts)
+      content = append_console(content, opts)
       blobWorker = new Blob([content], {type:'application/javascript'})
       blobWorker_url = URL.createObjectURL(blobWorker)
       inlineWorker = new Worker(blobWorker_url)
 
-      prepareInlineDebug(inlineWorker)
+      prepareInlineDebug(inlineWorker, opts)
       #revokeObjectURL after creating it
       URL.revokeObjectURL(blobWorker_url)
       inlineWorker
@@ -91,11 +92,6 @@ define (require)->
       #revokeObjectURL after creating it
       URL.revokeObjectURL(blobWorker_url)
       inlineWorker
-
-
-    createInlineWorkerD: (content)->
-      _dfr = $.Deferred()
-      worker = @createInlineWorker.apply(@, arguments)
 
 
   new WorkerUtil()

@@ -12,7 +12,7 @@ define (require)->
         o.trigger(data.msgId, [data[data.msgId], event])
 
     constructor: (inlineWorker_js, opts)->
-      @worker = worker_util.createInlineWorker(inlineWorker_js)
+      @worker = worker_util.createInlineWorker(inlineWorker_js, opts)
       @worker.addEventListener('message', onMessage)
 
     send: (id, msgData, options)->

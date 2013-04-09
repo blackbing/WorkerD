@@ -8,7 +8,7 @@
 * [Backbone](http://documentcloud.github.com/backbone)
 * [RequireJS](http://requirejs.org)
 
-###Compile CoffeeScript
+###Compile CoffeeScript and Watch worker script
 
     ./watch.sh
 

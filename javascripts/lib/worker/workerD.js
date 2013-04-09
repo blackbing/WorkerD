@@ -21,7 +21,7 @@
       };
 
       function WorkerD(inlineWorker_js, opts) {
-        this.worker = worker_util.createInlineWorker(inlineWorker_js);
+        this.worker = worker_util.createInlineWorker(inlineWorker_js, opts);
         this.worker.addEventListener('message', onMessage);
       }
 
