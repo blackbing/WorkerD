@@ -4,6 +4,7 @@
 # Add files and commands to this file, like the example:
 #   watch(%r{file/path}) { `command(s)` }
 #
-guard :shell do
-  watch('javascripts/inlineWorker.js') { `r.js -o 'build-inlineWorker.js'`}
+guard 'shell' do
+  watch(/(javascripts\/.*).js/) { `r.js -o 'build-inlineWorker.js'`}
 end
+
