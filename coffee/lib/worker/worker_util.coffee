@@ -12,13 +12,16 @@ define (require)->
 
       jsContent = []
       if opts.enableRequire
+        console.info 'enableRequire'
         jsContent.push(importRequirejs)
 
       if opts.enableDebug
+        console.info 'enableDebug'
         jsContent.push(worker_console_js)
 
       jsContent.push(worker_event_js)
       jsContent.push(content)
+      #return
       jsContent.join("\n")
 
     prepareInlineDebug = (inlineWorker, opts)->
@@ -35,7 +38,9 @@ define (require)->
 
       #make sure if you want to hadle error event by yourself
       inlineWorker.addEventListener('error', (event)->
+        console.group "error from worker"
         console.error(event)
+        console.groupEnd "error from worker"
       , false)
 
       inlineWorker

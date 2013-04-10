@@ -16,9 +16,11 @@
 
         jsContent = [];
         if (opts.enableRequire) {
+          console.info('enableRequire');
           jsContent.push(importRequirejs);
         }
         if (opts.enableDebug) {
+          console.info('enableDebug');
           jsContent.push(worker_console_js);
         }
         jsContent.push(worker_event_js);
@@ -44,7 +46,9 @@
           }
         }, false);
         inlineWorker.addEventListener('error', function(event) {
-          return console.error(event);
+          console.group("error from worker");
+          console.error(event);
+          return console.groupEnd("error from worker");
         }, false);
         return inlineWorker;
       };
