@@ -2,7 +2,7 @@ define (require)->
 
   #sharedworker_js = require 'text!./sharedWorker.js'
   log = require './lib/log'
-  WorkerD = require './lib/worker/workerD'
+  WorkerD = require './lib/WorkerD/WorkerD'
   inlineWorker_js = require 'text!./inlineWorker-built.js'
 
   sumMax = 1000000000

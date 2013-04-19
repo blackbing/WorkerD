@@ -4,7 +4,7 @@
     var WorkerD, countSum, inlineWorker_js, loaded, loading, log, sumMax;
 
     log = require('./lib/log');
-    WorkerD = require('./lib/worker/workerD');
+    WorkerD = require('./lib/WorkerD/WorkerD');
     inlineWorker_js = require('text!./inlineWorker-built.js');
     sumMax = 1000000000;
     loading = function() {

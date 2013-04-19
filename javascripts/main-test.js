@@ -4,7 +4,7 @@
     var worker_console_spec_js, worker_util;
 
     worker_console_spec_js = require('text!./worker_console_spec.js');
-    worker_util = require('./lib/worker/worker_util');
+    worker_util = require('./lib/WorkerD//worker_util');
     console.log(worker_util);
     buster.spec.expose();
     return describe("worker console", function() {

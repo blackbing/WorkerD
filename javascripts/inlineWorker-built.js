@@ -36,12 +36,16 @@
   this.on("getSum", function(max) {
     var cnt, sum;
 
+    console.time('getSum');
+    console.log('getSum', max);
     sum = cnt = 0;
     while (cnt <= max) {
       sum += cnt++;
     }
+    console.log('sum=', sum);
     self.send('getSum', sum);
-    return console.log('inlineWorker send message');
+    console.log('inlineWorker send message');
+    return console.timeEnd('getSum');
   });
 
 }).call(this);
