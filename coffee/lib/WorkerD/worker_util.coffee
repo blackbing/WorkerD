@@ -7,6 +7,7 @@ define (require)->
 
   URL = window.URL or window.webkitURL
   class WorkerUtil
+    consoleStyle = 'background: #000; color: #FFF;'
     #private method
     append_console = (content, opts)->
 
@@ -30,10 +31,10 @@ define (require)->
           return false
         data = event.data
         if typeof data is 'object' and data.debug?
-          console.group "console from worker"
+          console.group "%c console from worker", consoleStyle
           args = _.toArray(data.args)
           console[data.debug].apply(console, args)
-          console.groupEnd "console from worker"
+          console.groupEnd "%c console from worker", consoleStyle
       , false)
 
       #make sure if you want to hadle error event by yourself

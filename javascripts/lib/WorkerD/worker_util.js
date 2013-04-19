@@ -9,7 +9,9 @@
     importRequirejs = "importScripts('" + requirejsPath + "');";
     URL = window.URL || window.webkitURL;
     WorkerUtil = (function() {
-      var append_console, getSharedWorkerURL, options, prepareInlineDebug, storeSharedWorkerURL;
+      var append_console, consoleStyle, getSharedWorkerURL, options, prepareInlineDebug, storeSharedWorkerURL;
+
+      consoleStyle = 'background: #000; color: #FFF;';
 
       append_console = function(content, opts) {
         var jsContent;
@@ -39,10 +41,10 @@
           }
           data = event.data;
           if (typeof data === 'object' && (data.debug != null)) {
-            console.group("console from worker");
+            console.group("%c console from worker", consoleStyle);
             args = _.toArray(data.args);
             console[data.debug].apply(console, args);
-            return console.groupEnd("console from worker");
+            return console.groupEnd("%c console from worker", consoleStyle);
           }
         }, false);
         inlineWorker.addEventListener('error', function(event) {
