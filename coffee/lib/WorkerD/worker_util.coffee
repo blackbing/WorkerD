@@ -32,7 +32,10 @@ define (require)->
         data = event.data
         if typeof data is 'object' and data.debug?
           console.group "%c console from worker", consoleStyle
-          args = _.toArray(data.args)
+          #args = _.toArray(data.args)
+          args = []
+          for k, v of data.args
+            args.push(v)
           console[data.debug].apply(console, args)
           console.groupEnd "%c console from worker", consoleStyle
       , false)
@@ -61,12 +64,12 @@ define (require)->
 
     constructor: (opts)->
 
-      options = _.extend(options, opts)
+      options = $.extend(options, opts)
       @options = options
       #do something
 
     createInlineWorker: (content, opts)->
-      opts = _.extend(options, opts)
+      opts = $.extend(options, opts)
       content = append_console(content, opts)
       blobWorker = new Blob([content], {type:'application/javascript'})
       blobWorker_url = URL.createObjectURL(blobWorker)

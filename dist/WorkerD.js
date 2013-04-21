@@ -39,7 +39,7 @@ define('text!lib/WorkerD/worker_event.js',[],function () { return '// Generated 
         var _this = this;
 
         inlineWorker.addEventListener('message', function(event) {
-          var args, data;
+          var args, data, k, v, _ref;
 
           if (!opts.enableDebug) {
             return false;
@@ -47,7 +47,12 @@ define('text!lib/WorkerD/worker_event.js',[],function () { return '// Generated 
           data = event.data;
           if (typeof data === 'object' && (data.debug != null)) {
             console.group("%c console from worker", consoleStyle);
-            args = _.toArray(data.args);
+            args = [];
+            _ref = data.args;
+            for (k in _ref) {
+              v = _ref[k];
+              args.push(v);
+            }
             console[data.debug].apply(console, args);
             return console.groupEnd("%c console from worker", consoleStyle);
           }
@@ -74,14 +79,14 @@ define('text!lib/WorkerD/worker_event.js',[],function () { return '// Generated 
       };
 
       function WorkerUtil(opts) {
-        options = _.extend(options, opts);
+        options = $.extend(options, opts);
         this.options = options;
       }
 
       WorkerUtil.prototype.createInlineWorker = function(content, opts) {
         var blobWorker, blobWorker_url, inlineWorker;
 
-        opts = _.extend(options, opts);
+        opts = $.extend(options, opts);
         content = append_console(content, opts);
         blobWorker = new Blob([content], {
           type: 'application/javascript'

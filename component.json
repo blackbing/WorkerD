@@ -3,8 +3,7 @@
   "version": "0.0.1",
   "main": "dist/Worker.js",
   "dependencies"  : {
-    "text": "~2.0.5",
-    "underscore": "~1.1.7"
+    "text": "~2.0.5"
   },
   "ignore": [
     "Gemfile",
