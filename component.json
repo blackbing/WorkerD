@@ -1,10 +1,17 @@
 {
   "name": "WorkerD",
   "version": "0.0.1",
-  "main": "javascripts/lib/WorkerD/Worker.min.js",
+  "main": "dist/Worker.js",
   "ignore": [
+    '.rvmrc',
+    'Guardfile',
     "**/.*",
     "node_modules",
+    "build",
+    "coffee",
+    "img",
+    "sass",
+    "stylesheets",
     "components"
   ]
 }
