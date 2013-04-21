@@ -14,7 +14,21 @@ WorkerD has some features of it.
 2. Support requirejs
 3. Use event more easily(your don't need to bind event again and again....)
 
-##Development
+#Usage
+
+## yeoman
+If you use [Yeoman](http://yeoman.io/), it is the easist way to start to use.
+
+1. yo {your project}
+2. ```bower install WorkerD```
+
+## Others
+
+1. Download the latest [WorkerD](https://raw.github.com/blackbing/WorkerD/master/dist/WorkerD.js)
+2. Add to your project
+3. ```require("lib/WorkerD")```
+
+#For Development or Contribute
 
 ###Dependency
 
@@ -49,5 +63,6 @@ and open
 ###Build
 Based on [require/r.js](http://requirejs.org/docs/optimization.html)
 
-    ./build.sh
+    cd build
+    ./build-WorkerD.sh
 ============
