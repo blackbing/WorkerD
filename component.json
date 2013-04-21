@@ -3,6 +3,9 @@
   "version": "0.0.1",
   "main": "dist/Worker.js",
   "ignore": [
+    "Gemfile",
+    "Gemfile.lock",
+    "*.sh",
     ".rvmrc",
     "Guardfile",
     "**/.*",
