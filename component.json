@@ -2,6 +2,9 @@
   "name": "WorkerD",
   "version": "0.0.1",
   "main": "dist/Worker.js",
+  "dependencies"  : {
+    "text": "~2.0.5"
+  },
   "ignore": [
     "Gemfile",
     "Gemfile.lock",
