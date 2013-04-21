@@ -1,0 +1,11 @@
+{
+  "name"          : "WorkerD",
+  "description"   : "WorkerD is a small library to use Web Worker more easily.",
+  "homepage"      : "http://workerd.blackbing.net",
+  "keywords"      : ["Web Worker", "html5", "Worker", "console", "require"],
+  "author"        : "blackbing<blackbing@gmail.com>",
+  "repository"    : {"type": "git", "url": "git@github.com:blackbing/WorkerD.git"},
+  "main"          : "dist/WorkerD.js",
+  "version"       : "0.0.1",
+  "license"       : "MIT"
+}
