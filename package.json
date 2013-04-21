@@ -8,7 +8,8 @@
   "main"          : "dist/WorkerD.js",
   "version"       : "0.0.1",
   "dependencies"  : {
-    "text": "~2.0.5"
+    "text": "~2.0.5",
+    "underscore": "~1.1.7"
   },
   "license"       : [
     {
