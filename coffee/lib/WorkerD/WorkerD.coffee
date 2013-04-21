@@ -1,5 +1,5 @@
 define (require)->
-  worker_util = require './worker_util'
+  worker_util = require 'lib/WorkerD/worker_util'
 
   class WorkerD
     dfr = $.Deferred()

@@ -3,7 +3,7 @@
   define(function(require) {
     var WorkerD, worker_util;
 
-    worker_util = require('./worker_util');
+    worker_util = require('lib/WorkerD/worker_util');
     return WorkerD = (function() {
       var dfr, o, onMessage;
 

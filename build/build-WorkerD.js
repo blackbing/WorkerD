@@ -1,8 +1,13 @@
 {
-  baseUrl: "../javascripts/",
-  optimizeAllPluginResources: true,
+  baseUrl: "../javascripts",
   exclude: ['text'],
-  optimize: "uglify",
-  name: "lib/WorkerD/WorkerD",
+  //optimizeAllPluginResources: true,
+  //optimize: "uglify",
+  paths:{
+    "WorkerD": "lib/WorkerD/WorkerD",
+    'text' : 'vender/text'
+  },
+  optimize: "none",
+  name: "WorkerD",
   out: "../dist/WorkerD.js"
 }

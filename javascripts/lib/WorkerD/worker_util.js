@@ -3,8 +3,8 @@
   define(function(require) {
     var URL, WorkerUtil, importRequirejs, requirejsPath, worker_console_js, worker_event_js;
 
-    worker_console_js = require('text!./worker_console.js');
-    worker_event_js = require('text!./worker_event.js');
+    worker_console_js = require('text!lib/WorkerD/worker_console.js');
+    worker_event_js = require('text!lib/WorkerD/worker_event.js');
     requirejsPath = 'http://requirejs.org/docs/release/2.1.5/minified/require.js';
     importRequirejs = "importScripts('" + requirejsPath + "');";
     URL = window.URL || window.webkitURL;
