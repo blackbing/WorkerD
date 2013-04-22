@@ -1,0 +1,30 @@
+$iconSpritePath: "../images/glyphicons-halflings.png";
+$iconWhiteSpritePath: "../images/glyphicons-halflings-white.png";
+
+@import 'sass-bootstrap/lib/bootstrap';
+html, body{
+  height: 100%;
+}
+body {
+  padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+}
+#log{
+  outline: 1px solid grey;
+}
+
+div.loading{
+  background-image: url('../images/ajax-loader.gif');
+  background-repeat: no-repeat;
+  position: fixed;
+  top: 50px;
+  width: 48px;
+  height: 48px;
+  left: 50%;
+  margin-left: -50px;
+  display:none;
+}
+#log{
+  padding: 10px;
+  height: 100%;
+}
+
