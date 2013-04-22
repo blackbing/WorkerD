@@ -16,11 +16,10 @@ WorkerD has some features of it.
 
 #Usage
 
-## yeoman
-If you use [Yeoman](http://yeoman.io/), it is the easist way to start to use.
+## bower
+It is the easist way to start to use.
 
-1. yo webapp
-2. ```bower install WorkerD```
+    bower install WorkerD
 
 ## Others
 
