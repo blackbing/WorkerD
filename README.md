@@ -19,12 +19,12 @@ WorkerD has some features of it.
 ## yeoman
 If you use [Yeoman](http://yeoman.io/), it is the easist way to start to use.
 
-1. yo {your project}
+1. yo webapp
 2. ```bower install WorkerD```
 
 ## Others
 
-1. Download the latest [WorkerD](https://raw.github.com/blackbing/WorkerD/master/dist/WorkerD.js)
+1. Download the latest [WorkerD](https://raw.github.com/blackbing/WorkerD/master/release/WorkerD.js)
 2. Add to your project
 3. ```require("lib/WorkerD")```
 
@@ -34,35 +34,15 @@ If you use [Yeoman](http://yeoman.io/), it is the easist way to start to use.
 
 If you want to run it on your machine, please make sure you have installed this.
 
-* CoffeeScript
-* compass
-* guard
+* [Yeoman](http://yeoman.io/)
 
-If you have bundle, you can just type
 
-    bundle install
+###run project
 
-to install these tools.
+    grunt server
 
-###Compile CoffeeScript and Watch worker script
-
-watch file and compile when you are developing. It will compile coffee, scss and
-worker your write.
-
-    ./watch.sh
-
-###Run Server
-You can run a simple server if you need it.
-
-    ./runSimpleServer.sh
-
-and open
-
-    http://localhost:8888
 
 ###Build
-Based on [require/r.js](http://requirejs.org/docs/optimization.html)
 
-    cd build
-    ./build-WorkerD.sh
+    grunt build-WorkerD
 ============
