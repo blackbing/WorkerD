@@ -1,6 +1,6 @@
 {
   "name": "WorkerD",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "main": "release/Worker.js",
   "dependencies"  : {
     "requirejs": "~2.1.4",
