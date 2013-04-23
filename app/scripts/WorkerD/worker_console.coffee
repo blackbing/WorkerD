@@ -1,5 +1,5 @@
 @postDebugMessage = (type, args)->
-  postMessage(
+  self.postMessage(
     debug: type
     args: args
   )
@@ -10,8 +10,10 @@ console_attr = [
   'info'
   'log'
   'warn'
+  'group'
+  'groupCollapsed'
+  'groupEnd'
   'dir'
-  'dirxml'
   'trace'
   'assert'
   'count'
@@ -21,13 +23,10 @@ console_attr = [
   'time'
   'timeEnd'
   'timeStamp'
-  'group'
-  'groupCollapsed'
-  'groupEnd'
 ]
 
-@console = {}
+self.console = {}
 for attr in console_attr
-  @console[attr] = do (attr)=>
+  self.console[attr] = do (attr)=>
     ()=>
       @postDebugMessage(attr, arguments)
