@@ -35,13 +35,23 @@ If you want to run it on your machine, please make sure you have installed this.
 
 * [Yeoman](http://yeoman.io/)
 
+1. ```git clone git@github.com:blackbing/WorkerD.git```
+2. ```cd WorkerD```
+3. ```yo webapp```
+4. Would you like to include Twitter Bootstrap for Sass? (Y/n) ```Y```
+5. Would you like to include RequireJS (for AMD support)? (Y/n) ```Y```
+6. Do Not overwrite any conflict file
+7. Overwrite Gruntfile.js? (enter "h" for help) [Ynaqdh]? (h) ```n```
 
-###run project
+If you didin't see any error message. It's all done.
+
+####Run server
 
     grunt server
 
-
-###Build
+###Build WorkerD.js
 
     grunt build-WorkerD
+    
+It will build on the path ```release/WorkerD.js```
 ============
