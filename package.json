@@ -16,9 +16,6 @@
   },
   "main": "dist/WorkerD.js",
   "version": "0.0.1",
-  "dependencies": {
-    "text": "~2.0.5"
-  },
   "license": [
     {
       "type": "GPL",
