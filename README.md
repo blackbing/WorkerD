@@ -27,6 +27,40 @@ It is the easist way to start to use.
 2. Add to your project
 3. ```require("lib/WorkerD")```
 
+#Basic Example
+
+###In app.coffee
+``` coffeescript
+# add .js for include the file as a text file
+inlineWorker_js = require "text!./workerScript/inlineWorker.js"
+# require WorkerD
+WorkerD = require("WorkerD/WorkerD")
+# new WorkerD
+worker = new WorkerD(inlineWorker_js ###js content as String###,
+  enableRequire: true #enable require, default is true
+  enableDebug: true #enable console, default is true
+)
+# use "send" function to send message
+# send task1 to worker with some data
+worker.send('task1' ###task id(string)###, data ###it can be anything###)
+# use "on" function to process data from worker with specify taskId
+worker.on('task1_done' ###task id(string)###, (event, data)->
+  console.log 'task1_done and receieved data', data 
+)
+```
+
+###In inlineWorker.js
+
+``` coffeescript
+# use "on" function to process data on the specify task id
+@on "task1", (somthing) ->
+  console.time('task1') #you can use console.time in Worker script
+  console.log 'task1', 'start'  #you can use console.log in Worker script
+  # dosomething
+  self.send('task1_done' ###task id(string)###, data ###it can be anything###)
+```
+
+
 #For Development or Contribute
 
 ###Dependency
