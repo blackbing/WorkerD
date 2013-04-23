@@ -54,4 +54,3 @@ If you didin't see any error message. It's all done.
     grunt build-WorkerD
     
 It will build on the path ```release/WorkerD.js```
-============
