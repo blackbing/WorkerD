@@ -40,8 +40,11 @@ If you want to run it on your machine, please make sure you have installed this.
 3. ```yo webapp```
 4. Would you like to include Twitter Bootstrap for Sass? (Y/n) ```Y```
 5. Would you like to include RequireJS (for AMD support)? (Y/n) ```Y```
-6. Do Not overwrite any conflict file
-7. Overwrite Gruntfile.js? (enter "h" for help) [Ynaqdh]? (h) ```n```
+6. **Do Not overwrite any conflict file**
+    1. Overwrite Gruntfile.js? (enter "h" for help) [Ynaqdh]? (h) ```n```
+    2. Overwrite package.json? (enter "h" for help) [Ynaqdh]? (h) ```n```
+    3. Overwrite component.json? (enter "h" for help) [Ynaqdh]? (h) ```n```
+    4. ...
 
 If you didin't see any error message. It's all done.
 
