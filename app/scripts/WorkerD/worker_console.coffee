@@ -29,4 +29,5 @@ self.console = {}
 for attr in console_attr
   self.console[attr] = do (attr)=>
     ()=>
-      @postDebugMessage(attr, arguments)
+      args = Array.prototype.slice.call(arguments)
+      @postDebugMessage(attr, args)
