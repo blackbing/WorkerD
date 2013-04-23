@@ -35,6 +35,8 @@ If you want to run it on your machine, please make sure you have installed this.
 
 * [Yeoman](http://yeoman.io/)
 
+Following the steps to setup environment:
+
 1. ```git clone git@github.com:blackbing/WorkerD.git```
 2. ```cd WorkerD```
 3. ```yo webapp```
