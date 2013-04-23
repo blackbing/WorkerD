@@ -11,16 +11,19 @@ require(
 
 
 @on "getSum", (max) ->
+  console.group 'getSum'
   console.time('getSum')
-  console.log 'getSum', max
+  console.log 'getSum'
+  console.log max
   sum = cnt = 0
   while(cnt<=max)
     sum += cnt++
 
-  console.log 'sum=', sum
+  console.log sum
   self.send('getSum', sum)
   console.log 'inlineWorker send message'
   console.timeEnd('getSum')
+  console.groupEnd 'getSum'
 
 
 

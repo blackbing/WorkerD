@@ -2,12 +2,22 @@ define (require)->
   worker_console_js = require 'text!./worker_console.js'
   worker_event_js = require 'text!./worker_event.js'
 
-  requirejsPath = 'http://requirejs.org/docs/release/2.1.5/minified/require.js'
-  importRequirejs = "importScripts('#{requirejsPath}');"
-
-  URL = window.URL or window.webkitURL
   class WorkerUtil
-    consoleStyle = 'background: #000; color: #FFF;'
+    URL = window.URL or window.webkitURL
+    requirejsPath = 'http://requirejs.org/docs/release/2.1.5/minified/require.js'
+    importRequirejs = "importScripts('#{requirejsPath}');"
+    consoleStyle = 'background: #555454; color: #fff; padding: 2px;'
+    supportSyntaxList = [
+      'debug'
+      'error'
+      'info'
+      'log'
+      'warn'
+      'group'
+      'groupCollapsed'
+      'groupEnd'
+    ]
+    consoleStylePrefix = '%c'
     #private method
     append_console = (content, opts)->
 
@@ -31,13 +41,16 @@ define (require)->
           return false
         data = event.data
         if typeof data is 'object' and data.debug?
-          console.group "%c console from worker", consoleStyle
+          #console.group "%c console from worker", consoleStyle
           #args = _.toArray(data.args)
           args = []
           for k, v of data.args
             args.push(v)
+          #apply style
+          if $.inArray( data.debug, supportSyntaxList )>=0
+            args[0] = consoleStylePrefix + args[0]
+            args.push(consoleStyle)
           console[data.debug].apply(console, args)
-          console.groupEnd "%c console from worker", consoleStyle
       , false)
 
       #make sure if you want to hadle error event by yourself
