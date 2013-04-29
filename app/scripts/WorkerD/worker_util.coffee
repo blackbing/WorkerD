@@ -6,7 +6,7 @@ define (require)->
     URL = window.URL or window.webkitURL
     requirejsPath = 'http://requirejs.org/docs/release/2.1.5/minified/require.js'
     importRequirejs = "importScripts('#{requirejsPath}');"
-    consoleStyle = 'background: #555454; color: #fff; padding: 2px;'
+    consoleStyle = 'background: #555454; color: #F1F179; padding: 2px;'
     supportSyntaxList = [
       'debug'
       'error'
