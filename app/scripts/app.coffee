@@ -1,7 +1,7 @@
 define (require) ->
   "use strict"
   WorkerD = require("WorkerD/WorkerD")
-  inlineWorker_js = require "text!./workerScript/inlineWorker.js"
+  inlineWorker_js = require "text!./workerScript/inlineWorker.build.js"
   log = require './log'
 
 
