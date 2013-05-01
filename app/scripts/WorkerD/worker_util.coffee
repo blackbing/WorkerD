@@ -48,9 +48,15 @@ define (require)->
             args.push(v)
           #apply style
           if $.inArray( data.debug, supportSyntaxList )>=0
-            args[0] = consoleStylePrefix + args[0]
-            args.push(consoleStyle)
-          console[data.debug].apply(console, args)
+            if typeof args[0] isnt 'object'
+              args[0] = consoleStylePrefix + args[0]
+              args.push(consoleStyle)
+              console[data.debug].apply(console, args)
+            else
+              console.group "%cconsole from worker", consoleStyle
+              console[data.debug].apply(console, args)
+              console.groupEnd "%cconsole from worker", consoleStyle
+
       , false)
 
       #make sure if you want to hadle error event by yourself
