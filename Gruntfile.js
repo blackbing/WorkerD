@@ -23,10 +23,16 @@ module.exports = function (grunt) {
 
     grunt.initConfig({
         yeoman: yeomanConfig,
+        workers: {
+          path: 'workerScript',
+          worker:{
+            'inlineWorker': 'inlineWorker.build'
+          }
+        },
         watch: {
             coffee: {
                 files: ['<%= yeoman.app %>/scripts/{,*/}*.coffee'],
-                tasks: ['coffee:dist']
+                tasks: ['coffee:dist', 'requirejs:workers']
             },
             coffeeTest: {
                 files: ['test/spec/{,*/}*.coffee'],
@@ -191,6 +197,14 @@ module.exports = function (grunt) {
                     optimize: 'none',
                     name: 'WorkerD',
                     out: 'release/WorkerD.js'
+                }
+            },
+            workers: {
+                options: {
+                    baseUrl: '.tmp/scripts/<%= workers.path %>/',
+                    optimize: 'none',
+                    name: 'inlineWorker',
+                    out: '.tmp/scripts/<%= workers.path %>/<%= workers.worker.inlineWorker %>.js'
                 }
             }
         },

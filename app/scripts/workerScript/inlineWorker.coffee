@@ -1,16 +1,20 @@
 
 console.log 'inlineWorker loaded'
 
-###
-require(
-  ["require", "module", "test-car"], (require, module, Car) ->
+require([
+  "require"
+  "module"
+  "./test-car"
+  ], (require, module, Car) ->
     car = new Car('red')
     console.log car
+
 )
-###
+
 
 
 @on "getSum", (max) ->
+  console.log 'hello'
   console.group 'getSum'
   console.time('getSum')
   console.log 'getSum'
