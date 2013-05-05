@@ -1,0 +1,37 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title>~/Works/github/WorkerD/app/code/with_worker.coffee.html</title>
+<meta name="Generator" content="Vim/7.3">
+<meta name="plugin-version" content="vim7.3_v6">
+<meta name="syntax" content="javascript">
+<meta name="settings" content="use_css,number_lines">
+<style type="text/css">
+<!--
+pre { font-family: monospace; color: #ffffff; background-color: #000000; }
+body { font-family: monospace; color: #ffffff; background-color: #000000; }
+.lnr { color: #ffff00; }
+.PreProc { color: #5fd7ff; }
+.Type { color: #87ffaf; }
+.Statement { color: #ffff00; }
+.Constant { color: #ff40ff; }
+.Special { color: #ffd7d7; }
+-->
+</style>
+</head>
+<body>
+<pre>
+<span class="lnr"> 1 </span>
+<span class="lnr"> 2 </span>  $<span class="Special">(</span><span class="Constant">'#sum_with_worker'</span><span class="Special">)</span><span class="Statement">.</span>on<span class="Special">(</span><span class="Constant">'click'</span><span class="Special">,</span> <span class="Statement">-&gt;</span>
+<span class="lnr"> 3 </span>    loading<span class="Special">()</span>
+<span class="lnr"> 4 </span>    worker <span class="Statement">=</span> <span class="Statement">new</span> <span class="Type">WorkerD</span><span class="Special">(</span>inlineWorker_js<span class="Special">)</span>
+<span class="lnr"> 5 </span>    worker<span class="Statement">.</span>send<span class="Special">(</span><span class="Constant">'getSum'</span><span class="Special">,</span> sumMax<span class="Special">)</span>
+<span class="lnr"> 6 </span>    worker<span class="Statement">.</span>on<span class="Special">(</span><span class="Constant">'gotSum'</span><span class="Special">,</span> <span class="Special">(</span>event<span class="Special">,</span> data<span class="Special">)</span><span class="Statement">-&gt;</span>
+<span class="lnr"> 7 </span>      log <span class="Constant">&quot;gotSum: </span><span class="PreProc">#{</span>data<span class="PreProc">}</span><span class="Constant">&quot;</span>
+<span class="lnr"> 8 </span>      loaded<span class="Special">()</span>
+<span class="lnr"> 9 </span>    <span class="Special">)</span>
+<span class="lnr">10 </span>  <span class="Special">)</span>
+</pre>
+</body>
+</html>

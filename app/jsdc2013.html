@@ -28,8 +28,8 @@
             <a class="brand" href="#">WorkerD</a>
             <div class="nav-collapse collapse">
               <ul class="nav">
-                <li class="active"><a href="/">Home</a></li>
-                <li><a href="jsdc2013.html">JSDC2013</a></li>
+                <li><a href="/">Home</a></li>
+                <li class="active"><a href="jsdc2013.html">JSDC2013</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#contact">Contact</a></li>
               </ul>
@@ -61,26 +61,64 @@
         <div class="row">
           <div class="span3 bs-docs-sidebar">
             <ul class="nav nav-list bs-docs-sidenav affix">
-              <li><a href="#workerd"><i class="icon-chevron-right"></i> WorkerD</a></li>
-              <li><a href="#introduction"><i class="icon-chevron-right"></i> Introduction</a></li>
-              <li><a href="#usage"><i class="icon-chevron-right"></i> Usage</a></li>
-              <li><a href="#example"><i class="icon-chevron-right"></i> Example</a></li>
-              <li><a href="#development"><i class="icon-chevron-right"></i> Development</a></li>
+              <li><a href="#without_worker"><i class="icon-chevron-right"></i> without worker</a></li>
+              <li><a href="#without_worker_delay"><i class="icon-chevron-right"></i> without worker delay</a></li>
+              <li><a href="#with_worker"><i class="icon-chevron-right"></i> with worker</a></li>
             </ul>
           </div>
           <div class="span9">
             <!-- Download
             ================================================== -->
-            <section id="download-bootstrap">
+            <h1>Sum 1+2+3+...+1000000000 </h1>
+            <section id="without_worker">
               <div class="page-header">
-                <h1>WorkerD</h1>
+                <h2>without worker</h2>
+              </div>
+              <div class="row-fluid">
+                <div class="span6">
+                  <iframe class="without_worker" src="code/without_worker.coffee.html"></iframe>
+                  <button id="sum_without_worker">Run!</button>
+                </div>
+                <div class="span6">
+                  <div class="log"></div>
+                </div>
               </div>
             </section>
 
+            <section id="without_worker_delay">
+              <div class="page-header">
+                <h2>without worker and delay</h2>
+              </div>
+              <div class="row-fluid">
+                <div class="span6">
+                  <iframe class="without_worker" src="code/without_worker_delay.coffee.html"></iframe>
+                  <button id="sum_without_worker_delay">Run!</button>
+                </div>
+                <div class="span6">
+                  <div class="log"></div>
+                </div>
+              </div>
+            </section>
 
+            <section id="with_worker">
+              <div class="page-header">
+                <h2>with worker</h2>
+              </div>
+              <div class="row-fluid">
+                <div class="span6">
+                  <iframe src="code/worker.coffee.html"></iframe>
+                  <iframe src="code/with_worker.coffee.html"></iframe>
+                  <button id="sum_with_worker">Run!</button>
+                </div>
+                <div class="span6">
+                  <div class="log"></div>
+                </div>
+              </div>
+            </section>
           </div>
         </div>
       </div> <!-- /container -->
+      <div class="loading"></div>
 
         <!--[if lt IE 7]>
             <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>

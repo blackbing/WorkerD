@@ -1,3 +1,3 @@
 define (require)->
   (log)->
-    $('#log').prepend("<p>#{log}</p>")
+    $('.log').prepend("<p>#{log}</p>")

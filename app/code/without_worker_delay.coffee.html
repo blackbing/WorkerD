@@ -1,0 +1,40 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title>~/Works/github/WorkerD/app/code/without_worker_delay.coffee.html</title>
+<meta name="Generator" content="Vim/7.3">
+<meta name="plugin-version" content="vim7.3_v6">
+<meta name="syntax" content="javascript">
+<meta name="settings" content="use_css,number_lines">
+<style type="text/css">
+<!--
+pre { font-family: monospace; color: #ffffff; background-color: #000000; }
+body { font-family: monospace; color: #ffffff; background-color: #000000; }
+.lnr { color: #ffff00; }
+.PreProc { color: #5fd7ff; }
+.Constant { color: #ff40ff; }
+.Special { color: #ffd7d7; }
+.Statement { color: #ffff00; }
+-->
+</style>
+</head>
+<body>
+<pre>
+<span class="lnr"> 1 </span>  countSum <span class="Statement">=</span> <span class="Special">(</span>max<span class="Special">)</span><span class="Statement">-&gt;</span>
+<span class="lnr"> 2 </span>    sum <span class="Statement">=</span> cnt <span class="Statement">=</span> <span class="Constant">0</span>
+<span class="lnr"> 3 </span>    <span class="Statement">while</span><span class="Special">(</span>cnt<span class="Statement">&lt;=</span>max<span class="Special">)</span>
+<span class="lnr"> 4 </span>      sum <span class="Statement">+=</span> cnt<span class="Statement">++</span>
+<span class="lnr"> 5 </span>    sum
+<span class="lnr"> 6 </span>
+<span class="lnr"> 7 </span>  $<span class="Special">(</span><span class="Constant">'#sum_without_worker_delay'</span><span class="Special">)</span><span class="Statement">.</span>on<span class="Special">(</span><span class="Constant">'click'</span><span class="Special">,</span> <span class="Statement">-&gt;</span>
+<span class="lnr"> 8 </span>    loading<span class="Special">()</span>
+<span class="lnr"> 9 </span>    setTimeout<span class="Special">(</span><span class="Statement">-&gt;</span>
+<span class="lnr">10 </span>      sum <span class="Statement">=</span> countSum<span class="Special">(</span>sumMax<span class="Special">)</span>
+<span class="lnr">11 </span>      log <span class="Constant">&quot;getSum: </span><span class="PreProc">#{</span>sum<span class="PreProc">}</span><span class="Constant">&quot;</span>
+<span class="lnr">12 </span>      loaded<span class="Special">()</span>
+<span class="lnr">13 </span>    <span class="Special">,</span> <span class="Constant">200</span><span class="Special">)</span>
+<span class="lnr">14 </span>  <span class="Special">)</span>
+</pre>
+</body>
+</html>

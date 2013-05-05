@@ -11,4 +11,7 @@ require.config
 
 require [ "app", "jquery", "bootstrap" ], (app, $) ->
   "use strict"
+  $('iframe').each( ->
+    $(@).height(@.contentWindow.document.body.scrollHeight)
+  )
   console.log "Running jQuery %s", $().jquery
