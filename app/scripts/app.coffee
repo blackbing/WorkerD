@@ -61,8 +61,8 @@ define (require) ->
     worker.send('getSum', sumMax)
     #worker.send('test')
     log 'sum with worker start'
-    worker.on('getSum', (event, data)->
-      log "getSum: #{data}"
+    worker.on('gotSum', (event, data)->
+      log "gotSum: #{data}"
       log 'sum with worker end'
       ts = +(new Date()) - ts
       log "time spend: #{ts} ms"

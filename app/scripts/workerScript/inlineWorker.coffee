@@ -14,7 +14,6 @@ require([
 
 
 @on "getSum", (max) ->
-  console.log 'hello'
   console.group 'getSum'
   console.time('getSum')
   console.log 'getSum'
@@ -24,7 +23,7 @@ require([
     sum += cnt++
 
   console.log sum
-  self.send('getSum', sum)
+  self.send('gotSum', sum)
   console.log 'inlineWorker send message'
   console.timeEnd('getSum')
   console.groupEnd 'getSum'
