@@ -30,11 +30,13 @@ body {
 div.loading{
   background-image: url('../images/ajax-loader.gif');
   background-repeat: no-repeat;
-  position: fixed;
-  top: 68px;
+  position: relative;
   width: 48px;
   height: 48px;
-  left: 377px;
+  left: 0;
+  right: 0;
+  top: 200px;
+  margin: auto;
   display:none;
 }
 /* Sidenav for Docs
