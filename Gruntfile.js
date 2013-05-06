@@ -358,6 +358,7 @@ module.exports = function (grunt) {
             'concurrent:server',
             'livereload-start',
             'connect:livereload',
+            'requirejs:workers',
             'open',
             'watch'
         ]);
