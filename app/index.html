@@ -69,15 +69,103 @@
             </ul>
           </div>
           <div class="span9">
-            <!-- Download
-            ================================================== -->
-            <section id="download-bootstrap">
+            <section id="workerd">
               <div class="page-header">
                 <h1>WorkerD</h1>
               </div>
+              <p>WorkerD is a small library to use Web Worker more easily. In original Web Worker,
+              there are some troublesome of using it. It is</p>
+
+              <ul>
+              <li>Dependency</li>
+              <li>Hardly debugging without console</li>
+              <li>Hardly to setup a Worker</li>
+              </ul>
             </section>
+            <section id="introduction">
+              <div class="page-header">
+                <h1>Introduction</h1>
+              </div>
+              <p>WorkerD has some features of it.</p>
+
+              <ol>
+              <li>Support console.everything(well, almost).</li>
+              <li>Support requirejs</li>
+              <li>Use event more easily(your don't need to bind event again and again....)</li>
+              </ol>
+            </section>
+            <section id="usage">
+              <div class="page-header">
+                <h1>Usage</h1>
+              </div>
+              <h2>bower</h2>
+
+              <p>It is the easist way to start to use.</p>
+
+              <pre><code>bower install WorkerD
+              </code></pre>
+
+              <h2>Others</h2>
+
+              <ol>
+              <li>Download the latest <a href="https://raw.github.com/blackbing/WorkerD/master/release/WorkerD.js">WorkerD</a></li>
+              <li>Add to your project</li>
+              <li><code>require("lib/WorkerD")</code></li>
+              </ol>
+            </section>
+            <section id="example">
+              <div class="page-header">
+                <h1>Example</h1>
+              </div>
+              <p>to be continue...</p>
+            </section>
+            <section id="development">
+              <div class="page-header">
+                <h1>For Development or Contribute</h1>
+              </div>
+              <h3>Dependency</h3>
+
+              <p>If you want to run it on your machine, please make sure you have installed this.</p>
+
+              <ul>
+              <li><a href="http://yeoman.io/">Yeoman</a></li>
+              </ul>
 
 
+              <h4>Following the steps to setup environment:</h4>
+
+              <ol>
+              <li><code>git clone git@github.com:blackbing/WorkerD.git</code></li>
+              <li><code>cd WorkerD</code></li>
+              <li><code>yo webapp</code></li>
+              <li>Would you like to include Twitter Bootstrap for Sass? (Y/n) <code>Y</code></li>
+              <li>Would you like to include RequireJS (for AMD support)? (Y/n) <code>Y</code></li>
+              <li><strong>Do Not overwrite any other conflict file</strong>
+
+              <ol>
+              <li>Overwrite Gruntfile.js? (enter "h" for help) [Ynaqdh]? (h) <code>n</code></li>
+              <li>Overwrite package.json? (enter "h" for help) [Ynaqdh]? (h) <code>n</code></li>
+              <li>Overwrite component.json? (enter "h" for help) [Ynaqdh]? (h) <code>n</code></li>
+              <li>...</li>
+              </ol>
+              </li>
+              </ol>
+
+
+              <p>If you didin't see any error message. It's all done.</p>
+
+              <h4>Run server</h4>
+
+              <pre><code>grunt server
+              </code></pre>
+
+              <h3>Build WorkerD.js</h3>
+
+              <pre><code>grunt build-WorkerD
+              </code></pre>
+
+              <p>It will build on the path <code>release/WorkerD.js</code></p>
+            </section>
           </div>
         </div>
       </div> <!-- /container -->
