@@ -108,8 +108,11 @@ div.loading{
     bottom: 270px;
 }
 
-
 .sandbox{
+  background-color: rgb(60, 60, 60);
+}
+
+.script-block{
   h2{
     font-family: Helvetica Neue,Helvetica,Arial,sans-serif;
     font-size: 14px;
@@ -131,7 +134,7 @@ div.loading{
     z-index: 10;
   }
   .editor{
-    color: #FFF;
+    color: rgb(60, 60, 60);
     width: 100%;
     margin-top: 30px;
     height: 600px;
