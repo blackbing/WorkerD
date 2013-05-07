@@ -52,9 +52,11 @@ define (require)->
               args[0] = consoleStylePrefix + args[0]
               args.push(consoleStyle)
               console[data.debug].apply(console, args)
-            else
+          else
+            if data.debug isnt 'time'
               console.group "%cconsole from worker", consoleStyle
-              console[data.debug].apply(console, args)
+            console[data.debug].apply(console, args)
+            if data.debug isnt 'time'
               console.groupEnd "%cconsole from worker", consoleStyle
 
       , false)
