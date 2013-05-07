@@ -45,7 +45,7 @@ worker = new WorkerD(inlineWorker_js ###js content as String###,
 worker.send('task1' ###task id(string)###, data ###it can be anything###)
 # use "on" function to process data from worker with specify taskId
 worker.on('task1_done' ###task id(string)###, (event, data)->
-  console.log 'task1_done and receieved data', data 
+  console.log 'task1_done and receieved data', data
 )
 ```
 
@@ -81,6 +81,7 @@ If you want to run it on your machine, please make sure you have installed this.
     2. Overwrite package.json? (enter "h" for help) [Ynaqdh]? (h) ```n```
     3. Overwrite component.json? (enter "h" for help) [Ynaqdh]? (h) ```n```
     4. ...
+7. ```bower install```
 
 If you didin't see any error message. It's all done.
 
@@ -91,5 +92,5 @@ If you didin't see any error message. It's all done.
 ###Build WorkerD.js
 
     grunt build-WorkerD
-    
+
 It will build on the path ```release/WorkerD.js```
