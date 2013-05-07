@@ -16,4 +16,3 @@ require [ "app", "jquery", "bootstrap" ], (app, $) ->
   $('iframe').each( ->
     $(@).height(@.contentWindow.document.body.scrollHeight)
   )
-  console.log "Running jQuery %s", $().jquery

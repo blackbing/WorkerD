@@ -35,7 +35,6 @@ require [
 
     masterScript = masterEditor.getValue()
     window['WORKER_CONTENT'] = workerScript
-    console.log masterScript
     masterScriptBlob = new Blob([masterScript], {type:'application/javascript'})
     masterScriptUrl = URL.createObjectURL(masterScriptBlob)
 
