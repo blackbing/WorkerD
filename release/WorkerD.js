@@ -18,7 +18,7 @@ define('text!worker_event.js',[],function () { return '(function() {\n  var Call
 
       importRequirejs = "importScripts('" + requirejsPath + "');";
 
-      consoleStyle = 'background: #555454; color: #fff; padding: 2px;';
+      consoleStyle = 'background: #555454; color: #F1F179; padding: 2px;';
 
       supportSyntaxList = ['debug', 'error', 'info', 'log', 'warn', 'group', 'groupCollapsed', 'groupEnd'];
 
@@ -59,10 +59,20 @@ define('text!worker_event.js',[],function () { return '(function() {\n  var Call
               args.push(v);
             }
             if ($.inArray(data.debug, supportSyntaxList) >= 0) {
-              args[0] = consoleStylePrefix + args[0];
-              args.push(consoleStyle);
+              if (typeof args[0] !== 'object') {
+                args[0] = consoleStylePrefix + args[0];
+                args.push(consoleStyle);
+                return console[data.debug].apply(console, args);
+              }
+            } else {
+              if (data.debug !== 'time') {
+                console.group("%cconsole from worker", consoleStyle);
+              }
+              console[data.debug].apply(console, args);
+              if (data.debug !== 'time') {
+                return console.groupEnd("%cconsole from worker", consoleStyle);
+              }
             }
-            return console[data.debug].apply(console, args);
           }
         }, false);
         inlineWorker.addEventListener('error', function(event) {
@@ -100,7 +110,6 @@ define('text!worker_event.js',[],function () { return '(function() {\n  var Call
           type: 'application/javascript'
         });
         blobWorker_url = URL.createObjectURL(blobWorker);
-        console.log(blobWorker_url);
         inlineWorker = new Worker(blobWorker_url);
         prepareInlineDebug(inlineWorker, opts);
         return inlineWorker;

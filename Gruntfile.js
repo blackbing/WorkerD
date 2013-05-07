@@ -332,8 +332,8 @@ module.exports = function (grunt) {
                 'coffee',
                 'compass:dist',
                 'imagemin',
-                'svgmin',
-                'htmlmin'
+                'svgmin'
+                //'htmlmin'
             ]
         },
         bower: {
