@@ -92,7 +92,6 @@ define (require)->
       content = append_console(content, opts)
       blobWorker = new Blob([content], {type:'application/javascript'})
       blobWorker_url = URL.createObjectURL(blobWorker)
-      console.log blobWorker_url
       inlineWorker = new Worker(blobWorker_url)
 
       prepareInlineDebug(inlineWorker, opts)

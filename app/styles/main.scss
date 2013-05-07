@@ -114,6 +114,7 @@ div.loading{
     font-family: Helvetica Neue,Helvetica,Arial,sans-serif;
     font-size: 14px;
     height: 24px;
+    line-height: 24px;
     position: relative;
     width: 60px;
     text-align: center;
@@ -121,7 +122,7 @@ div.loading{
     float: right;
     top: 30px;
     margin: 0;
-    padding: 2px 4px 4px 4px;
+    padding: 0;
     -webkit-border-radius: 0 0 0 4px;
     -moz-border-radius: 0 0 0 4px;
     border-radius: 0 0 0 4px;
@@ -130,10 +131,15 @@ div.loading{
     z-index: 10;
   }
   .editor{
+    color: #FFF;
     width: 100%;
     margin-top: 30px;
     height: 600px;
     top: 0;
     font-size: 1em;
+  }
+  #run{
+    margin-top: 10px;
+    float: right;
   }
 }

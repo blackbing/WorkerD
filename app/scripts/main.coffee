@@ -5,6 +5,8 @@ require.config
     text: "../components/text/text"
 
   shim:
+    jquery:
+      exports: "$"
     bootstrap:
       deps: [ "jquery" ]
       exports: "jquery"

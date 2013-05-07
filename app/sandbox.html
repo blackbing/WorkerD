@@ -42,18 +42,23 @@
           <div class="span6">
             <h2>Master</h2>
             <div id="masterEditor" class="editor">
-var worker = new WorkerD('worker.js');
-worker.on('gotSum', function(data) {
-  console.log(data);
+//WORKER_CONTENT is a string variable for running,
+//Don't change it.
+var worker = new WorkerD(WORKER_CONTENT);
+//You can modify code from here.
+worker.on('gotSum', function(event, data) {
+  alert(data);
 });
 worker.send('getSum', 1000000000);
             </div>
+
+            <button class="btn btn-large btn-primary" id="run">RUN!</button>
           </div>
           <div class="span6">
             <h2>Worker</h2>
             <div id="workerEditor" class="editor">
 // This will be saved as worker.js
-function getsum(max) {
+function getSum(max) {
   var cnt = 0;
   var sum = 0;
   while (cnt <= max) {
