@@ -2,7 +2,6 @@ define (require)->
   worker_util = require './worker_util'
 
   class WorkerD
-    dfr = $.Deferred()
 
     o = $({})
 
