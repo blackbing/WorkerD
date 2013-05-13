@@ -35,6 +35,7 @@ body {
   display: inline-block;
   background-image: url('../images/ajax-loader.gif');
   background-repeat: no-repeat;
+  cursor: pointer;
 }
 /* Sidenav for Docs
 -------------------------------------------------- */
@@ -134,7 +135,7 @@ body {
     color: rgb(60, 60, 60);
     width: 100%;
     margin-top: 30px;
-    height: 600px;
+    height: 520px;
     top: 0;
     font-size: 1em;
   }
