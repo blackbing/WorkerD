@@ -14,12 +14,12 @@
         <!-- build:js scripts/vendor/modernizr.js -->
         <script src="components/modernizr/modernizr.js"></script>
         <!-- endbuild -->
-        <title>WorkerD</title>
+        <title>WorkerD Sandbox</title>
     </head>
     <body class="sandbox">
       <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="navbar-inner">
-          <div class="container">
+          <div class="container-fluid">
             <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
@@ -37,8 +37,8 @@
           </div>
         </div>
       </div>
-      <div class="container script-block">
-        <div class="row">
+      <div class="container-fluid script-block">
+        <div class="row-fluid">
           <div class="span6">
             <h2>Master</h2>
             <div id="masterEditor" class="editor">
@@ -52,7 +52,7 @@ worker.on('gotSum', function(event, data) {
 worker.send('getSum', 1000000000);
             </div>
 
-            <button class="btn btn-large btn-primary" id="run">RUN!</button>
+            <button class="btn btn-primary" id="run">RUN!</button>
           </div>
           <div class="span6">
             <h2>Worker</h2>

@@ -14,6 +14,10 @@ define (require) ->
     $('.loading').hide()
     log "<hr>"
 
+  $('.loading').on('click', ->
+    $(@).hide()
+  )
+
   countSum = (max)->
     sum = cnt = 0
     while(cnt<=max)

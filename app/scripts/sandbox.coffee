@@ -14,6 +14,7 @@ require.config
 require [
   "WorkerD/WorkerD"
   "jquery"
+  "bootstrap"
 ], (WorkerD) ->
 
   masterEditor = ace.edit('masterEditor')
