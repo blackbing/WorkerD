@@ -45,12 +45,11 @@
               <li><a href="#without_worker_delay"><i class="icon-chevron-right"></i> without worker delay</a></li>
               <li><a href="#with_worker"><i class="icon-chevron-right"></i> with worker</a></li>
             </ul>
-            <div class="loading"></div>
           </div>
           <div class="span9">
             <!-- Download
             ================================================== -->
-            <h1>Sum 1+2+3+...+1000000000 </h1>
+            <h1>Sum 1+2+...+1000000000 </h1>
             <section id="without_worker">
               <div class="page-header">
                 <h2>without worker</h2>
@@ -59,6 +58,7 @@
                 <div class="span6">
                   <iframe class="without_worker" src="code/without_worker.coffee.html"></iframe>
                   <button id="sum_without_worker">Run!</button>
+                  <span class="loading"></span>
                 </div>
                 <div class="span6">
                   <div class="log"></div>
@@ -74,6 +74,7 @@
                 <div class="span6">
                   <iframe class="without_worker" src="code/without_worker_delay.coffee.html"></iframe>
                   <button id="sum_without_worker_delay">Run!</button>
+                  <span class="loading"></span>
                 </div>
                 <div class="span6">
                   <div class="log"></div>
@@ -90,6 +91,7 @@
                   <iframe src="code/worker.coffee.html"></iframe>
                   <iframe src="code/with_worker.coffee.html"></iframe>
                   <button id="sum_with_worker">Run!</button>
+                  <span class="loading"></span>
                 </div>
                 <div class="span6">
                   <div class="log"></div>
