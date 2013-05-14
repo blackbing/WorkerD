@@ -34,14 +34,19 @@ require [
 
     #console.log workerScriptUrl
 
-    masterScript = masterEditor.getValue()
+    masterScript = '(function(){' + masterEditor.getValue() + '})()'
     window['WORKER_CONTENT'] = workerScript
     masterScriptBlob = new Blob([masterScript], {type:'application/javascript'})
     masterScriptUrl = URL.createObjectURL(masterScriptBlob)
 
 
+    if $('#workerd').length
+      URL.revokeObjectURL($('#workerd').attr('src'))
+      $('#workerd').remove()
+
     s = document.createElement('script')
     s.src = masterScriptUrl
+    s.id = 'workerd'
 
     head = document.getElementsByTagName('head')[0]
     head.insertBefore(s, head.firstChild)

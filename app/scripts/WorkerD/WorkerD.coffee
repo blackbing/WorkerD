@@ -1,18 +1,19 @@
 define (require)->
-  worker_util = require './worker_util'
+  worker_util  = require './worker_util'
 
   class WorkerD
-
-    o = $({})
 
     onMessage = (event)->
       data = event.data
       if typeof data is 'object' and data.msgId?
-        o.trigger(data.msgId, [data[data.msgId], event])
+        @o.trigger(data.msgId, [data[data.msgId], event])
 
     constructor: (inlineWorker_js, opts)->
       @worker = worker_util.createInlineWorker(inlineWorker_js, opts)
-      @worker.addEventListener('message', onMessage)
+      @worker.addEventListener('message', =>
+        onMessage.apply(@, arguments)
+      )
+      @o = $({})
 
     send: (id, msgData, options)->
       msg =
@@ -22,10 +23,11 @@ define (require)->
       @worker.postMessage.apply(@worker, [msg, options])
 
     on: (id, handle)->
-      o.on.apply(o, arguments)
+      @o.on.apply(@o, arguments)
 
     terminate: ()->
       @worker.terminate()
+      @o = null
 
 
 
