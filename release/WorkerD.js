@@ -148,24 +148,25 @@ define('text!worker_event.js',[],function () { return '(function() {\n  var Call
 
     worker_util = require('./worker_util');
     return WorkerD = (function() {
-      var dfr, o, onMessage;
-
-      dfr = $.Deferred();
-
-      o = $({});
+      var onMessage;
 
       onMessage = function(event) {
         var data;
 
         data = event.data;
         if (typeof data === 'object' && (data.msgId != null)) {
-          return o.trigger(data.msgId, [data[data.msgId], event]);
+          return this.o.trigger(data.msgId, [data[data.msgId], event]);
         }
       };
 
       function WorkerD(inlineWorker_js, opts) {
+        var _this = this;
+
         this.worker = worker_util.createInlineWorker(inlineWorker_js, opts);
-        this.worker.addEventListener('message', onMessage);
+        this.worker.addEventListener('message', function() {
+          return onMessage.apply(_this, arguments);
+        });
+        this.o = $({});
       }
 
       WorkerD.prototype.send = function(id, msgData, options) {
@@ -179,11 +180,12 @@ define('text!worker_event.js',[],function () { return '(function() {\n  var Call
       };
 
       WorkerD.prototype.on = function(id, handle) {
-        return o.on.apply(o, arguments);
+        return this.o.on.apply(this.o, arguments);
       };
 
       WorkerD.prototype.terminate = function() {
-        return this.worker.terminate();
+        this.worker.terminate();
+        return this.o = null;
       };
 
       return WorkerD;
