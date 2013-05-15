@@ -15,7 +15,7 @@
     "url": "git@github.com:blackbing/WorkerD.git"
   },
   "main": "dist/WorkerD.js",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "license": [
     {
       "type": "GPL",

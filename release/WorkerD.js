@@ -180,7 +180,7 @@ define('text!worker_event.js',[],function () { return '(function() {\n  var Call
       };
 
       WorkerD.prototype.on = function(id, handle) {
-        return this.o.on.apply(this.o, arguments);
+        return this.o.on(id, handle);
       };
 
       WorkerD.prototype.terminate = function() {

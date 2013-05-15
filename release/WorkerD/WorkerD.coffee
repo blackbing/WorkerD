@@ -23,7 +23,7 @@ define (require)->
       @worker.postMessage.apply(@worker, [msg, options])
 
     on: (id, handle)->
-      @o.on.apply(@o, arguments)
+      @o.on(id, handle)
 
     terminate: ()->
       @worker.terminate()
