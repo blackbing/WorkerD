@@ -1,16 +1,17 @@
 
 console.log 'inlineWorker loaded'
 
+###
 require([
   "require"
   "module"
-  "./test-car"
+  "./car"
   ], (require, module, Car) ->
     car = new Car('red')
     console.log car
 
 )
-
+###
 
 
 @on "getSum", (max) ->
