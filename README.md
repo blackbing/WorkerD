@@ -38,7 +38,7 @@ WorkerD = require("WorkerD/WorkerD")
 # new WorkerD
 worker = new WorkerD(inlineWorker_js ###js content as String###,
   enableRequire: true #enable require, default is true
-  enableDebug: true #enable console, default is true
+  enableConsole: true #enable console, default is true
 )
 # use "send" function to send message
 # send task1 to worker with some data

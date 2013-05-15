@@ -29,11 +29,9 @@ define('text!worker_event.js',[],function () { return '(function() {\n  var Call
 
         jsContent = [];
         if (opts.enableRequire) {
-          console.info('enableRequire');
           jsContent.push(importRequirejs);
         }
-        if (opts.enableDebug) {
-          console.info('enableDebug');
+        if (opts.enableConsole) {
           jsContent.push(worker_console_js);
         }
         jsContent.push(worker_event_js);
@@ -47,7 +45,7 @@ define('text!worker_event.js',[],function () { return '(function() {\n  var Call
         inlineWorker.addEventListener('message', function(event) {
           var args, data, k, v, _ref;
 
-          if (!opts.enableDebug) {
+          if (!opts.enableConsole) {
             return false;
           }
           data = event.data;
@@ -92,7 +90,7 @@ define('text!worker_event.js',[],function () { return '(function() {\n  var Call
       };
 
       options = {
-        enableDebug: true,
+        enableConsole: true,
         enableRequire: true
       };
 

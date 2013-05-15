@@ -60,7 +60,7 @@ define (require) ->
     ts = +(new Date())
     worker = new WorkerD(inlineWorker_js,
       enableRequire: true
-      enableDebug: true
+      enableConsole: true
     )
     worker.send('getSum', sumMax)
     #worker.send('test')

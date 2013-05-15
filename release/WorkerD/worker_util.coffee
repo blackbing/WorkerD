@@ -23,11 +23,9 @@ define (require)->
 
       jsContent = []
       if opts.enableRequire
-        console.info 'enableRequire'
         jsContent.push(importRequirejs)
 
-      if opts.enableDebug
-        console.info 'enableDebug'
+      if opts.enableConsole
         jsContent.push(worker_console_js)
 
       jsContent.push(worker_event_js)
@@ -37,7 +35,7 @@ define (require)->
 
     prepareInlineDebug = (inlineWorker, opts)->
       inlineWorker.addEventListener('message', (event)=>
-        if not opts.enableDebug
+        if not opts.enableConsole
           return false
         data = event.data
         if typeof data is 'object' and data.debug?
@@ -78,7 +76,7 @@ define (require)->
 
     options =
       #default is true
-      enableDebug: true
+      enableConsole: true
       enableRequire: true
 
     #private method END
