@@ -310,6 +310,17 @@ module.exports = function (grunt) {
                         '{,*/}*.js',
                     ]
                 }]
+            },
+            workerd: {
+                files: [{
+                    expand: true,
+                    dot: true,
+                    cwd: '<%= yeoman.app %>/scripts/WorkerD',
+                    dest: 'release/WorkerD',
+                    src: [
+                        '{,*/}*.coffee',
+                    ]
+                }]
             }
         },
         symlink: {
@@ -391,6 +402,7 @@ module.exports = function (grunt) {
         //'useminPrepare',
         'concurrent:dist',
         'copy:js',
+        'copy:workerd',
         'symlink',
         'requirejs:WorkerD',
     ]);
