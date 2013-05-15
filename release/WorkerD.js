@@ -146,7 +146,12 @@ define('text!worker_event.js',[],function () { return '(function() {\n  var Call
 
     worker_util = require('./worker_util');
     return WorkerD = (function() {
-      var onMessage;
+      var onMessage, options;
+
+      options = {
+        enableConsole: true,
+        enableRequire: true
+      };
 
       onMessage = function(event) {
         var data;
@@ -158,9 +163,15 @@ define('text!worker_event.js',[],function () { return '(function() {\n  var Call
       };
 
       function WorkerD(inlineWorker_js, opts) {
-        var _this = this;
+        var key, val,
+          _this = this;
 
-        this.worker = worker_util.createInlineWorker(inlineWorker_js, opts);
+        this.opts = opts != null ? opts : {};
+        for (key in options) {
+          val = options[key];
+          this.opts[key] = this.opts[key] ? this.opts[key] : options[key];
+        }
+        this.worker = worker_util.createInlineWorker(inlineWorker_js, this.opts);
         this.worker.addEventListener('message', function() {
           return onMessage.apply(_this, arguments);
         });
