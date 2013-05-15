@@ -61,6 +61,10 @@ define('text!worker_event.js',[],function () { return '(function() {\n  var Call
                 args[0] = consoleStylePrefix + args[0];
                 args.push(consoleStyle);
                 return console[data.debug].apply(console, args);
+              } else {
+                console.group("%cconsole from worker", consoleStyle);
+                console[data.debug].apply(console, args);
+                return console.groupEnd("%cconsole from worker", consoleStyle);
               }
             } else {
               if (data.debug !== 'time') {

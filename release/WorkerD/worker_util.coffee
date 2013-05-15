@@ -50,6 +50,10 @@ define (require)->
               args[0] = consoleStylePrefix + args[0]
               args.push(consoleStyle)
               console[data.debug].apply(console, args)
+            else
+              console.group "%cconsole from worker", consoleStyle
+              console[data.debug].apply(console, args)
+              console.groupEnd "%cconsole from worker", consoleStyle
           else
             if data.debug isnt 'time'
               console.group "%cconsole from worker", consoleStyle
