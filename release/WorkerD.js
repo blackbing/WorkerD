@@ -56,24 +56,16 @@ define('text!worker_event.js',[],function () { return '(function() {\n  var Call
               v = _ref[k];
               args.push(v);
             }
-            if ($.inArray(data.debug, supportSyntaxList) >= 0) {
-              if (typeof args[0] !== 'object') {
+            if ((typeof args[0]) === 'object') {
+              console.group("%cconsole from worker", consoleStyle);
+              console[data.debug].apply(console, args);
+              return console.groupEnd("%cconsole from worker", consoleStyle);
+            } else {
+              if ($.inArray(data.debug, supportSyntaxList) >= 0) {
                 args[0] = consoleStylePrefix + args[0];
                 args.push(consoleStyle);
-                return console[data.debug].apply(console, args);
-              } else {
-                console.group("%cconsole from worker", consoleStyle);
-                console[data.debug].apply(console, args);
-                return console.groupEnd("%cconsole from worker", consoleStyle);
               }
-            } else {
-              if (data.debug !== 'time') {
-                console.group("%cconsole from worker", consoleStyle);
-              }
-              console[data.debug].apply(console, args);
-              if (data.debug !== 'time') {
-                return console.groupEnd("%cconsole from worker", consoleStyle);
-              }
+              return console[data.debug].apply(console, args);
             }
           }
         }, false);

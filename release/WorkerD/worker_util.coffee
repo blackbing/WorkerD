@@ -44,22 +44,17 @@ define (require)->
           args = []
           for k, v of data.args
             args.push(v)
-          #apply style
-          if $.inArray( data.debug, supportSyntaxList )>=0
-            if typeof args[0] isnt 'object'
+          if (typeof args[0]) is 'object'
+            console.group "%cconsole from worker", consoleStyle
+            console[data.debug].apply(console, args)
+            console.groupEnd "%cconsole from worker", consoleStyle
+          else
+            #apply style
+            if $.inArray( data.debug, supportSyntaxList )>=0
               args[0] = consoleStylePrefix + args[0]
               args.push(consoleStyle)
-              console[data.debug].apply(console, args)
-            else
-              console.group "%cconsole from worker", consoleStyle
-              console[data.debug].apply(console, args)
-              console.groupEnd "%cconsole from worker", consoleStyle
-          else
-            if data.debug isnt 'time'
-              console.group "%cconsole from worker", consoleStyle
+
             console[data.debug].apply(console, args)
-            if data.debug isnt 'time'
-              console.groupEnd "%cconsole from worker", consoleStyle
 
       , false)
 
