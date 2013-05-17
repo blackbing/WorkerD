@@ -78,5 +78,6 @@ define (require) ->
     )
   )
 
-  if location.pathname.indexOf('/sandbox.html') > -1
+  if location.pathname.indexOf('sandbox.html') > -1
     sandboxView()
+
