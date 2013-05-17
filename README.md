@@ -10,7 +10,7 @@ there are some troublesome of using it. It is
 ##Introduction
 WorkerD has some features of it.
 
-1. Support console.everything(well, almost).
+1. Support console.everything(well, almost). such as ```console.log```, ```console.time```, ```console.timeEnd```
 2. Support requirejs
 3. Use event more easily(your don't need to bind event again and again....)
 
@@ -31,7 +31,7 @@ It is the easist way to start to use.
 
 ###In app.coffee
 ``` coffeescript
-# add .js for include the file as a text file
+# add .js for include the file as a text string
 inlineWorker_js = require "text!./workerScript/inlineWorker.js"
 # require WorkerD
 WorkerD = require("WorkerD/WorkerD")
@@ -67,20 +67,14 @@ worker.on('task1_done' ###task id(string)###, (event, data)->
 
 If you want to run it on your machine, please make sure you have installed this.
 
-* [Yeoman](http://yeoman.io/)
+* npm
+* bower 0.9.2
 
 ####Following the steps to setup environment:
 
 1. ```git clone git@github.com:blackbing/WorkerD.git```
 2. ```cd WorkerD```
-3. ```yo webapp```
-4. Would you like to include Twitter Bootstrap for Sass? (Y/n) ```Y```
-5. Would you like to include RequireJS (for AMD support)? (Y/n) ```Y```
-6. **Do Not overwrite any other conflict file**
-    1. Overwrite Gruntfile.js? (enter "h" for help) [Ynaqdh]? (h) ```n```
-    2. Overwrite package.json? (enter "h" for help) [Ynaqdh]? (h) ```n```
-    3. Overwrite component.json? (enter "h" for help) [Ynaqdh]? (h) ```n```
-    4. ...
+3. ```npm install```
 7. ```bower install```
 
 If you didin't see any error message. It's all done.
