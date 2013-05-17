@@ -299,7 +299,7 @@ module.exports = function (grunt) {
                         'styles/fonts/*',
                         'scripts/vendor/ace/*',
                         'code/*',
-                        '*.html'
+                        '*.*'
                     ]
                 }]
             },
