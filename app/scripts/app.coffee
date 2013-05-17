@@ -3,7 +3,11 @@ define (require) ->
   WorkerD = require("WorkerD/WorkerD")
   inlineWorker_js = require "text!./workerScript/inlineWorker.build.js"
   log = require './log'
+  sandboxView = require "./sandbox"
 
+  $('iframe').each( ->
+    $(@).height(@.contentWindow.document.body.scrollHeight)
+  )
 
   sumMax = 1000000000
 
@@ -73,3 +77,6 @@ define (require) ->
       loaded()
     )
   )
+
+  if location.pathname is '/sandbox.html'
+    sandboxView()

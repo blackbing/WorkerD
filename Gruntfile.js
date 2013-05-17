@@ -24,10 +24,10 @@ module.exports = function (grunt) {
     grunt.initConfig({
         yeoman: yeomanConfig,
         workers: {
-          path: 'workerScript',
-          worker:{
-            'inlineWorker': 'inlineWorker.build'
-          }
+            path: 'workerScript',
+            worker: {
+                'inlineWorker': 'inlineWorker.build'
+            }
         },
         watch: {
             coffee: {
@@ -296,7 +296,10 @@ module.exports = function (grunt) {
                         '*.{ico,txt}',
                         '.htaccess',
                         'images/{,*/}*.{webp,gif}',
-                        'styles/fonts/*'
+                        'styles/fonts/*',
+                        'scripts/vendor/ace/*',
+                        'code/*',
+                        '*.html'
                     ]
                 }]
             },
@@ -388,6 +391,7 @@ module.exports = function (grunt) {
         'concurrent:dist',
         'copy:js',
         'symlink',
+        'requirejs:workers',
         'requirejs:dist',
         'cssmin',
         'concat',

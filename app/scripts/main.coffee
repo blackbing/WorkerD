@@ -13,6 +13,3 @@ require.config
 
 require [ "app", "jquery", "bootstrap" ], (app, $) ->
   "use strict"
-  $('iframe').each( ->
-    $(@).height(@.contentWindow.document.body.scrollHeight)
-  )
