@@ -1,8 +1,0 @@
-node_modules
-dist
-.tmp
-*.DS_Store
-*.swp
-*.swo
-.sass-cache
-app/components
