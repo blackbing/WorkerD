@@ -16,6 +16,50 @@ WorkerD has some features of it.
 
 #Usage
 
+## syntax sugar
+
+``` javascript
+//Master script
+worker.send('count', {s:1, e:10})
+```
+
+``` javascript
+//Worker script
+self.on('count', function(data){
+  //data is {s:1, e:10}
+})
+```
+
+## console in worker script
+
+You can use console in your worker script.
+
+``` javascript
+console.debug
+console.error
+console.info
+console.log
+console.warn
+console.group
+console.groupCollapsed
+console.groupEnd
+console.dir
+console.trace
+console.assert
+console.count
+console.markTimeline
+console.time
+console.timeEnd
+console.timeStamp
+```
+
+## use require
+
+Well, it is hard to use require if you use require in inline Worker. This is a working process for using requirejs in this case.
+Please refer this project if you want to use it in your project. 
+
+[inlineWorker script](https://github.com/blackbing/WorkerD/blob/master/app/scripts/workerScript/inlineWorker.coffee)
+
 ## bower
 It is the easist way to start to use.
 
