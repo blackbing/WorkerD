@@ -67,7 +67,7 @@ It is the easist way to start to use.
 
 ## Others
 
-1. Download the latest [WorkerD](https://raw.github.com/blackbing/WorkerD/master/release/WorkerD.js)
+1. Download the [latest release of WorkerD](https://github.com/blackbing/WorkerD/tree/master/release)
 2. Add to your project
 3. ```require("lib/WorkerD")```
 
