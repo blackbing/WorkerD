@@ -105,6 +105,7 @@ module.exports = function (grunt) {
                     ]
                 }]
             },
+            release: '.tmp',
             server: '.tmp'
         },
         jshint: {
@@ -318,10 +319,10 @@ module.exports = function (grunt) {
                 files: [{
                     expand: true,
                     dot: true,
-                    cwd: '<%= yeoman.app %>/scripts/WorkerD',
+                    cwd: '.tmp/scripts/WorkerD',
                     dest: 'release/WorkerD',
                     src: [
-                        '{,*/}*.coffee',
+                        '{,*/}*.js',
                     ]
                 }]
             }
@@ -402,7 +403,7 @@ module.exports = function (grunt) {
     ]);
 
     grunt.registerTask('build-WorkerD', [
-        'clean:dist',
+        'clean:release',
         //'useminPrepare',
         'concurrent:dist',
         'copy:js',
