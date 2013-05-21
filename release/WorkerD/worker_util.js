@@ -22,6 +22,7 @@
       append_console = function(content, opts) {
         var jsContent;
 
+        console.log('append_console', opts);
         jsContent = [];
         if (opts.enableRequire) {
           jsContent.push(importRequirejs);
@@ -88,9 +89,12 @@
       function WorkerUtil(opts) {}
 
       WorkerUtil.prototype.createInlineWorker = function(content, opts) {
-        var blobWorker, blobWorker_url, inlineWorker;
+        var blobWorker, blobWorker_url, inlineWorker, key, val;
 
-        opts = $.extend(options, opts);
+        for (key in options) {
+          val = options[key];
+          opts[key] = !(opts[key] && options[key]) ? opts[key] : options[key];
+        }
         content = append_console(content, opts);
         blobWorker = new Blob([content], {
           type: 'application/javascript'

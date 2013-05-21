@@ -27,6 +27,7 @@ define('text!worker_event.js',[],function () { return '(function() {\n  var Call
       append_console = function(content, opts) {
         var jsContent;
 
+        console.log('append_console', opts);
         jsContent = [];
         if (opts.enableRequire) {
           jsContent.push(importRequirejs);
@@ -93,9 +94,12 @@ define('text!worker_event.js',[],function () { return '(function() {\n  var Call
       function WorkerUtil(opts) {}
 
       WorkerUtil.prototype.createInlineWorker = function(content, opts) {
-        var blobWorker, blobWorker_url, inlineWorker;
+        var blobWorker, blobWorker_url, inlineWorker, key, val;
 
-        opts = $.extend(options, opts);
+        for (key in options) {
+          val = options[key];
+          opts[key] = !(opts[key] && options[key]) ? opts[key] : options[key];
+        }
         content = append_console(content, opts);
         blobWorker = new Blob([content], {
           type: 'application/javascript'
@@ -139,12 +143,14 @@ define('text!worker_event.js',[],function () { return '(function() {\n  var Call
 
     worker_util = require('./worker_util');
     return WorkerD = (function() {
-      var onMessage, options;
-
-      options = {
-        enableConsole: true,
+      /*
+      options =
+        #default is true
+        enableConsole: true
         enableRequire: true
-      };
+      */
+
+      var onMessage;
 
       onMessage = function(event) {
         var data;
@@ -156,14 +162,9 @@ define('text!worker_event.js',[],function () { return '(function() {\n  var Call
       };
 
       function WorkerD(inlineWorker_js, opts) {
-        var key, val,
-          _this = this;
+        var _this = this;
 
         this.opts = opts != null ? opts : {};
-        for (key in options) {
-          val = options[key];
-          this.opts[key] = !(this.opts[key] && options[key]) ? this.opts[key] : options[key];
-        }
         this.worker = worker_util.createInlineWorker(inlineWorker_js, this.opts);
         this.worker.addEventListener('message', function() {
           return onMessage.apply(_this, arguments);

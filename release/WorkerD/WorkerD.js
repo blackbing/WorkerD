@@ -4,12 +4,14 @@
 
     worker_util = require('./worker_util');
     return WorkerD = (function() {
-      var onMessage, options;
-
-      options = {
-        enableConsole: true,
+      /*
+      options =
+        #default is true
+        enableConsole: true
         enableRequire: true
-      };
+      */
+
+      var onMessage;
 
       onMessage = function(event) {
         var data;
@@ -21,14 +23,9 @@
       };
 
       function WorkerD(inlineWorker_js, opts) {
-        var key, val,
-          _this = this;
+        var _this = this;
 
         this.opts = opts != null ? opts : {};
-        for (key in options) {
-          val = options[key];
-          this.opts[key] = !(this.opts[key] && options[key]) ? this.opts[key] : options[key];
-        }
         this.worker = worker_util.createInlineWorker(inlineWorker_js, this.opts);
         this.worker.addEventListener('message', function() {
           return onMessage.apply(_this, arguments);
