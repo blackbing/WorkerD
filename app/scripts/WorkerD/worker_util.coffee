@@ -20,6 +20,7 @@ define (require)->
     consoleStylePrefix = '%c'
     #private method
     append_console = (content, opts)->
+      console.log 'append_console', opts
 
       jsContent = []
       if opts.enableRequire
@@ -74,7 +75,7 @@ define (require)->
       localStorage.getItem(name)
 
     options =
-      #default is true
+#default is true
       enableConsole: true
       enableRequire: true
 
@@ -87,7 +88,9 @@ define (require)->
       #do something
 
     createInlineWorker: (content, opts)->
-      opts = $.extend(options, opts)
+      for key,val of options
+        opts[key] = if !(opts[key] && options[key]) then opts[key] else options[key]
+
       content = append_console(content, opts)
       blobWorker = new Blob([content], {type:'application/javascript'})
       blobWorker_url = URL.createObjectURL(blobWorker)
