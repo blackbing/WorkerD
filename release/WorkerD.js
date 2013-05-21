@@ -27,7 +27,6 @@ define('text!worker_event.js',[],function () { return '(function() {\n  var Call
       append_console = function(content, opts) {
         var jsContent;
 
-        console.log('append_console', opts);
         jsContent = [];
         if (opts.enableRequire) {
           jsContent.push(importRequirejs);

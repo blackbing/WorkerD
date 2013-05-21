@@ -22,7 +22,6 @@
       append_console = function(content, opts) {
         var jsContent;
 
-        console.log('append_console', opts);
         jsContent = [];
         if (opts.enableRequire) {
           jsContent.push(importRequirejs);

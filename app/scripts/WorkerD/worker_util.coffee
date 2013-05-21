@@ -20,7 +20,6 @@ define (require)->
     consoleStylePrefix = '%c'
     #private method
     append_console = (content, opts)->
-      console.log 'append_console', opts
 
       jsContent = []
       if opts.enableRequire
