@@ -14,7 +14,8 @@ define (require)->
 
     constructor: (inlineWorker_js, @opts={})->
       for key,val of options
-        @opts[key] = if @opts[key] then @opts[key] else options[key]
+        @opts[key] = if !(@opts[key] && options[key]) then @opts[key] else options[key]
+
 
       @worker = worker_util.createInlineWorker(inlineWorker_js, @opts)
       @worker.addEventListener('message', =>

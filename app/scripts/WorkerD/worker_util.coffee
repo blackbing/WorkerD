@@ -82,8 +82,8 @@ define (require)->
 
     constructor: (opts)->
 
-      options = $.extend(options, opts)
-      @options = options
+      #options = $.extend(options, opts)
+      #@options = options
       #do something
 
     createInlineWorker: (content, opts)->
