@@ -27,7 +27,7 @@
         this.opts = opts != null ? opts : {};
         for (key in options) {
           val = options[key];
-          this.opts[key] = this.opts[key] ? this.opts[key] : options[key];
+          this.opts[key] = !(this.opts[key] && options[key]) ? this.opts[key] : options[key];
         }
         this.worker = worker_util.createInlineWorker(inlineWorker_js, this.opts);
         this.worker.addEventListener('message', function() {

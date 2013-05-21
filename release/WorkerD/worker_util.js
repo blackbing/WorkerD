@@ -85,10 +85,7 @@
         enableRequire: true
       };
 
-      function WorkerUtil(opts) {
-        options = $.extend(options, opts);
-        this.options = options;
-      }
+      function WorkerUtil(opts) {}
 
       WorkerUtil.prototype.createInlineWorker = function(content, opts) {
         var blobWorker, blobWorker_url, inlineWorker;

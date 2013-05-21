@@ -90,10 +90,7 @@ define('text!worker_event.js',[],function () { return '(function() {\n  var Call
         enableRequire: true
       };
 
-      function WorkerUtil(opts) {
-        options = $.extend(options, opts);
-        this.options = options;
-      }
+      function WorkerUtil(opts) {}
 
       WorkerUtil.prototype.createInlineWorker = function(content, opts) {
         var blobWorker, blobWorker_url, inlineWorker;
@@ -165,7 +162,7 @@ define('text!worker_event.js',[],function () { return '(function() {\n  var Call
         this.opts = opts != null ? opts : {};
         for (key in options) {
           val = options[key];
-          this.opts[key] = this.opts[key] ? this.opts[key] : options[key];
+          this.opts[key] = !(this.opts[key] && options[key]) ? this.opts[key] : options[key];
         }
         this.worker = worker_util.createInlineWorker(inlineWorker_js, this.opts);
         this.worker.addEventListener('message', function() {
